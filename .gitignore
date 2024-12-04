@@ -1,0 +1,25 @@
+*.ckpt
+*.pth
+*.pt
+*.onnx
+*.pth.tar
+
+*.mp4
+*.mkv
+*.mov
+
+# *.jpg
+# *.jpeg
+# *.png
+# *.bmp
+
+*.ipynb
+wget*
+
+# configs/
+
+dump/
+
+__pycache__
+
+# config/
