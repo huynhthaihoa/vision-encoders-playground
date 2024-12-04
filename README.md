@@ -52,7 +52,7 @@ This repository aims to summarize **pretrained encoders (backbones)** derived fr
 |[torchvision](https://github.com/pytorch/vision)|ImageNet|[torchvision_encoder.py](encoders/torchvision_encoder.py)|regnet_y_400mf|BSD 3-Clause|:grey_question:|
 |[torchvision](https://github.com/pytorch/vision)|ImageNet|[torchvision_encoder.py](encoders/torchvision_encoder.py)|regnet_y_800mf|BSD 3-Clause|:grey_question:|
 |[torchvision](https://github.com/pytorch/vision)|ImageNet|[torchvision_encoder.py](encoders/torchvision_encoder.py)|regnet_y_1_6gf|BSD 3-Clause|:grey_question:|
-|[torchvision](https://github.com/pytorch/vision)|[torchvision_encoder.py](encoders/torchvision_encoder.py)|regnet_y_3_2gf|BSD 3-Clause|:grey_question:|
+|[torchvision](https://github.com/pytorch/vision)|ImageNet|[torchvision_encoder.py](encoders/torchvision_encoder.py)|regnet_y_3_2gf|BSD 3-Clause|:grey_question:|
 |[torchvision](https://github.com/pytorch/vision)|ImageNet|[torchvision_encoder.py](encoders/torchvision_encoder.py)|regnet_y_8gf|BSD 3-Clause|:grey_question:|
 |[torchvision](https://github.com/pytorch/vision)|ImageNet|[torchvision_encoder.py](encoders/torchvision_encoder.py)|regnet_y_16gf|BSD 3-Clause|:grey_question:|
 |[torchvision](https://github.com/pytorch/vision)|ImageNet|[torchvision_encoder.py](encoders/torchvision_encoder.py)|regnet_y_32gf|BSD 3-Clause|:grey_question:|
@@ -70,12 +70,12 @@ This repository aims to summarize **pretrained encoders (backbones)** derived fr
 |[apple ml-mobileone](https://github.com/apple/ml-mobileone)|ImageNet|[mobileone_encoder.py](encoders/mobileone_encoder.py)|mobileone_s4|Apple|:x:|
 |[apple ml-fastvit](https://github.com/apple/ml-fastvit)|ImageNet|[fastvit_encoder.py](encoders/fastvit_encoder.py)|fastvit_t8|Apple|:grey_question:|
 |[apple ml-fastvit](https://github.com/apple/ml-fastvit)|ImageNet|[fastvit_encoder.py](encoders/fastvit_encoder.py)|fastvit_t12|Apple|:grey_question:|
-|[apple ml-fastvit](https://github.com/apple/ml-fastvit)|[fastvit_encoder.py](encoders/fastvit_encoder.py)|fastvit_s12|Apple|:grey_question:|
+|[apple ml-fastvit](https://github.com/apple/ml-fastvit)|ImageNet|[fastvit_encoder.py](encoders/fastvit_encoder.py)|fastvit_s12|Apple|:grey_question:|
 |[apple ml-fastvit](https://github.com/apple/ml-fastvit)|ImageNet|[fastvit_encoder.py](encoders/fastvit_encoder.py)|fastvit_sa12|Apple|:grey_question:|
-|[apple ml-fastvit](https://github.com/apple/ml-fastvit)|ImageNet|[fastvit_encoder.py](encoders/fastvit_encoder.py)|fastvit_sa24|Apple|:grey_question:|
+|[apple ml-fastvit](https://github.com/apple/ml-fastvit)|ImageNet|[fastvit_encoder.py](encoders/fastvit_encoder.py)|ImageNet|fastvit_sa24|Apple|:grey_question:|
 |[apple ml-fastvit](https://github.com/apple/ml-fastvit)|ImageNet|[fastvit_encoder.py](encoders/fastvit_encoder.py)|fastvit_sa36|Apple|:grey_question:|
 |[apple ml-fastvit](https://github.com/apple/ml-fastvit)|ImageNet|[fastvit_encoder.py](encoders/fastvit_encoder.py)|fastvit_ma36|Apple|:grey_question:|
-|[timm encoder*](https://huggingface.co/docs/timm/feature_extraction)|[timm_encoder.py](encoders/timm_encoder.py)|ImageNet|-|Apache-2.0|:grey_question:|
+|[timm encoder*](https://huggingface.co/docs/timm/feature_extraction)|ImageNet|[timm_encoder.py](encoders/timm_encoder.py)|-|Apache-2.0|:grey_question:|
 |[facebook ConvNeXt](https://github.com/facebookresearch/ConvNeXt)|ImageNet|[convnext_encoder.py](encoders/convnext_encoder.py)|convnext_tiny|MIT|:x:|
 |[facebook ConvNeXt](https://github.com/facebookresearch/ConvNeXt)|ImageNet|[convnext_encoder.py](encoders/convnext_encoder.py)|convnext_small|MIT|:x:|
 |[facebook ConvNeXt](https://github.com/facebookresearch/ConvNeXt)|ImageNet|[convnext_encoder.py](encoders/convnext_encoder.py)|convnext_base|MIT|:x:|
