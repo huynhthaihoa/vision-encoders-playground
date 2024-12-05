@@ -3,14 +3,14 @@
 import torch.nn as nn
 import torchvision.models as models
 
-from ..function_utils import replace_layers
+from function_utils import replace_layers
 from class_utils import myConv, CustomSiLU
 from .base_encoder import BaseEncoder
 
 class ResNet(BaseEncoder):
     """ResNet: https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/He_Deep_Residual_Learning_CVPR_2016_paper.pdf
     """    
-    def __init__(self, architecture='resnet50', pretrained=True, finetune=False, out_dimList = [64, 128, 256, 512, 1024], use_5_feat=False):
+    def __init__(self, architecture='resnet50', pretrained=True, finetune=False):#, out_dimList = [64, 128, 256, 512, 1024], use_5_feat=False):
         super(ResNet, self).__init__(finetune)
         if architecture.find('50') != -1:
             if not pretrained:
@@ -48,11 +48,11 @@ class ResNet(BaseEncoder):
         else:
                 self.dimList = [256, 512, 1024, 2048]
 
-        if use_5_feat:
-            self.layerList.insert(0, 'relu')
-            self.dimList.insert(0, 64)
+        # if use_5_feat:
+        #     self.layerList.insert(0, 'relu')
+        #     self.dimList.insert(0, 64)
             
-        self.make_conv_convert_list(out_dimList)
+        # self.make_conv_convert_list(out_dimList)
  
         # self.freeze_bn(finetune)
         self._freeze_stages()
@@ -66,11 +66,11 @@ class ResNet(BaseEncoder):
                 break
             feature = v(feature)
             if any(x in k for x in self.layerList):
-                if self.conv_convert_list is None:
-                    out_featList.append(feature)
-                else:
-                    converted_feat = self.conv_convert_list[cnt](feature)
-                    out_featList.append(converted_feat)
+                # if self.conv_convert_list is None:
+                out_featList.append(feature)
+                # else:
+                #     converted_feat = self.conv_convert_list[cnt](feature)
+                #     out_featList.append(converted_feat)
                 cnt = cnt + 1 
         return out_featList
     
@@ -90,7 +90,7 @@ class ResNet(BaseEncoder):
 class RegNet(BaseEncoder):
     """RegNet: https://arxiv.org/abs/2003.13678
     """    
-    def __init__(self, architecture='regnet_y_3_2gf', pretrained=True, finetune=False, out_dimList = [64, 128, 256, 512, 1024], use_5_feat=False):
+    def __init__(self, architecture='regnet_y_3_2gf', pretrained=True, finetune=False):#, out_dimList = [64, 128, 256, 512, 1024], use_5_feat=False):
         super(RegNet, self).__init__(finetune)
         
         if architecture.find('y_400mf') != -1: #ok -> 4,969,849 - 6.88 GMac
@@ -188,11 +188,11 @@ class RegNet(BaseEncoder):
         
         self.layerList = ['block1','block2','block3', 'block4']
         
-        if use_5_feat:
-            self.dimList.insert(0, 32)
-            self.layerList.insert(0, 'stem') 
+        # if use_5_feat:
+        #     self.dimList.insert(0, 32)
+        #     self.layerList.insert(0, 'stem') 
         
-        self.make_conv_convert_list(out_dimList)
+        # self.make_conv_convert_list(out_dimList)
         
         # self.freeze_bn(finetune)
         self._freeze_stages()
@@ -208,11 +208,11 @@ class RegNet(BaseEncoder):
                 for m, n in v._modules.items():
                     if self.layerList[cnt] == m:
                         feature = n(feature)
-                        if self.conv_convert_list is None:
-                            out_featList.append(feature)
-                        else:
-                            converted_feat = self.conv_convert_list[cnt](feature)
-                            out_featList.append(converted_feat)
+                        # if self.conv_convert_list is None:
+                        out_featList.append(feature)
+                        # else:
+                        #     converted_feat = self.conv_convert_list[cnt](feature)
+                        #     out_featList.append(converted_feat)
                         cnt += 1
                         if cnt == 4:
                             break
@@ -234,7 +234,7 @@ class RegNet(BaseEncoder):
 class ResNext(BaseEncoder):
     """ResNeXt: https://github.com/facebookresearch/ResNeXt
     """    
-    def __init__(self, architecture='resnext101_32x8d', pretrained=True, finetune=False, out_dimList = [128, 256, 512, 1024], use_5_feat=False):
+    def __init__(self, architecture='resnext101_32x8d', pretrained=True, finetune=False):#, out_dimList = [128, 256, 512, 1024], use_5_feat=False):
         super(ResNext, self).__init__(finetune)
         # self.args = args
         # after passing Layer1 : H/4  x W/4     (44 x 88)
@@ -262,11 +262,11 @@ class ResNext(BaseEncoder):
         self.layerList = ['layer1', 'layer2', 'layer3', 'layer4']
         self.dimList = [256, 512, 1024, 2048]
         
-        if use_5_feat:
-            self.layerList.insert(0, 'relu')
-            self.dimList.insert(0, 64)
+        # if use_5_feat:
+        #     self.layerList.insert(0, 'relu')
+        #     self.dimList.insert(0, 64)
         
-        self.make_conv_convert_list(out_dimList)
+        # self.make_conv_convert_list(out_dimList)
         
         # self.freeze_bn(finetune)
         self._freeze_stages()
@@ -281,11 +281,11 @@ class ResNext(BaseEncoder):
                 break
             feature = v(feature)
             if any(x in k for x in self.layerList):
-                if self.conv_convert_list is None:
-                    out_featList.append(feature)
-                else:
-                    converted_feat = self.conv_convert_list[cnt](feature)
-                    out_featList.append(converted_feat)
+                # if self.conv_convert_list is None:
+                out_featList.append(feature)
+                # else:
+                #     converted_feat = self.conv_convert_list[cnt](feature)
+                #     out_featList.append(converted_feat)
                 cnt = cnt + 1
         return out_featList
     
@@ -308,7 +308,7 @@ class ResNext(BaseEncoder):
 class MobileNetV2(BaseEncoder):
     """MobileNetV2: https://arxiv.org/abs/1801.04381
     """    
-    def __init__(self, pretrained=True, finetune=False, out_dimList = [128, 256, 512, 1024], use_5_feat=False):
+    def __init__(self, pretrained=True, finetune=False):#, out_dimList = [128, 256, 512, 1024], use_5_feat=False):
         super(MobileNetV2, self).__init__(finetune)
         # after passing 1st : H/4  x W/4
         # after passing 2nd : H/8  x W/8
@@ -323,11 +323,11 @@ class MobileNetV2(BaseEncoder):
 
         self.layerList = [3, 6, 13, 18]
         self.dimList = [144, 192, 576, 1280]
-        if use_5_feat:
-            self.layerList.insert(0, 1)
-            self.dimList.insert(0, 32)
+        # if use_5_feat:
+        #     self.layerList.insert(0, 1)
+        #     self.dimList.insert(0, 32)
 
-        self.make_conv_convert_list(out_dimList)
+        # self.make_conv_convert_list(out_dimList)
         
         self._freeze_stages()
                 
@@ -342,27 +342,27 @@ class MobileNetV2(BaseEncoder):
                         feature = self.encoder.features[i].conv[j](feature)
                         if i == 1: 
                             if j == 0:
-                                if self.conv_convert_list is None:
-                                    out_featList.append(feature)
-                                else:
-                                    converted_feat = self.conv_convert_list[cnt](feature)
-                                    out_featList.append(converted_feat)
+                                # if self.conv_convert_list is None:
+                                out_featList.append(feature)
+                                # else:
+                                #     converted_feat = self.conv_convert_list[cnt](feature)
+                                #     out_featList.append(converted_feat)
                                 cnt = cnt + 1
                         else:
                             if j == 1:
-                                if self.conv_convert_list is None:
-                                    out_featList.append(feature)
-                                else:
-                                    converted_feat = self.conv_convert_list[cnt](feature)
-                                    out_featList.append(converted_feat)
+                                # if self.conv_convert_list is None:
+                                out_featList.append(feature)
+                                # else:
+                                #     converted_feat = self.conv_convert_list[cnt](feature)
+                                #     out_featList.append(converted_feat)
                                 cnt = cnt + 1
                 else:
                     feature = self.encoder.features[i](feature)
-                    if self.conv_convert_list is None:
-                        out_featList.append(feature)
-                    else:
-                        converted_feat = self.conv_convert_list[cnt](feature)
-                        out_featList.append(converted_feat)
+                    # if self.conv_convert_list is None:
+                    out_featList.append(feature)
+                    # else:
+                    #     converted_feat = self.conv_convert_list[cnt](feature)
+                    #     out_featList.append(converted_feat)
             else:
                 feature = self.encoder.features[i](feature)
             
@@ -371,7 +371,7 @@ class MobileNetV2(BaseEncoder):
 class MobileNetV3(BaseEncoder):
     """MobileNetV3: https://arxiv.org/abs/1905.02244
     """    
-    def __init__(self, architecture='mobilenetv3large', pretrained=True, finetune=False, out_dimList = [128, 256, 512, 1024]):
+    def __init__(self, architecture='mobilenetv3large', pretrained=True, finetune=False):#, out_dimList = [128, 256, 512, 1024]):
         super(MobileNetV3, self).__init__(finetune)
         #self.args = args
         # after passing 1st : H/4  x W/4
@@ -400,17 +400,17 @@ class MobileNetV3(BaseEncoder):
 
         # if len(out_dimList) == 0:
         #     self.conv_convert_list = None
-        if len(out_dimList) != 0:
-            assert len(out_dimList) == 4
+        # if len(out_dimList) != 0:
+        #     assert len(out_dimList) == 4
 
-            norm = 'BN'
-            act = 'ReLU'
+        #     norm = 'BN'
+        #     act = 'ReLU'
 
-            convert1 = myConv(self.dimList[0], out_dimList[0], kSize=1, stride=1, padding=0, bias=False, norm=norm, act=act, num_groups=self.dimList[0]//16)
-            convert2 = myConv(self.dimList[1], out_dimList[1], kSize=1, stride=1, padding=0, bias=False, norm=norm, act=act, num_groups=self.dimList[1]//16)
-            convert3 = myConv(self.dimList[2], out_dimList[2], kSize=1, stride=1, padding=0, bias=False, norm=norm, act=act, num_groups=self.dimList[2]//16)
-            convert4 = myConv(self.dimList[3], out_dimList[3], kSize=1, stride=1, padding=0, bias=False, norm=norm, act=act, num_groups=self.dimList[3]//16)
-            self.conv_convert_list = nn.ModuleList([convert1, convert2, convert3, convert4])#,convert5])
+        #     convert1 = myConv(self.dimList[0], out_dimList[0], kSize=1, stride=1, padding=0, bias=False, norm=norm, act=act, num_groups=self.dimList[0]//16)
+        #     convert2 = myConv(self.dimList[1], out_dimList[1], kSize=1, stride=1, padding=0, bias=False, norm=norm, act=act, num_groups=self.dimList[1]//16)
+        #     convert3 = myConv(self.dimList[2], out_dimList[2], kSize=1, stride=1, padding=0, bias=False, norm=norm, act=act, num_groups=self.dimList[2]//16)
+        #     convert4 = myConv(self.dimList[3], out_dimList[3], kSize=1, stride=1, padding=0, bias=False, norm=norm, act=act, num_groups=self.dimList[3]//16)
+        #     self.conv_convert_list = nn.ModuleList([convert1, convert2, convert3, convert4])#,convert5])
         
         self._freeze_stages()
     
@@ -425,27 +425,27 @@ class MobileNetV3(BaseEncoder):
                         feature = self.encoder.features[i].block[j](feature)
                         if i == 1: 
                             if j == 0:
-                                if self.conv_convert_list is None:
-                                    out_featList.append(feature)
-                                else:
-                                    converted_feat = self.conv_convert_list[cnt](feature)
-                                    out_featList.append(converted_feat)
+                                # if self.conv_convert_list is None:
+                                out_featList.append(feature)
+                                # else:
+                                #     converted_feat = self.conv_convert_list[cnt](feature)
+                                #     out_featList.append(converted_feat)
                                 cnt = cnt + 1
                         else:
                             if j == 1:
-                                if self.conv_convert_list is None:
-                                    out_featList.append(feature)
-                                else:
-                                    converted_feat = self.conv_convert_list[cnt](feature)
-                                    out_featList.append(converted_feat)
+                                # if self.conv_convert_list is None:
+                                out_featList.append(feature)
+                                # else:
+                                #     converted_feat = self.conv_convert_list[cnt](feature)
+                                #     out_featList.append(converted_feat)
                                 cnt = cnt + 1
                 else:
                     feature = self.encoder.features[i](feature)
-                    if self.conv_convert_list is None:
-                        out_featList.append(feature)
-                    else:
-                        converted_feat = self.conv_convert_list[cnt](feature)
-                        out_featList.append(converted_feat)
+                    # if self.conv_convert_list is None:
+                    out_featList.append(feature)
+                    # else:
+                    #     converted_feat = self.conv_convert_list[cnt](feature)
+                    #     out_featList.append(converted_feat)
             else:
                 feature = self.encoder.features[i](feature)
             
@@ -454,7 +454,7 @@ class MobileNetV3(BaseEncoder):
 class TorchEfficientNet(BaseEncoder):
     """EfficientNet: https://arxiv.org/abs/1905.11946
     """    
-    def __init__(self, architecture="torchefficientnet_b0", pretrained=True, finetune=False, out_dimList = [128, 256, 512, 1024], replace_silu = False, use_customsilu = False):
+    def __init__(self, architecture="torchefficientnet_b0", pretrained=True, finetune=False, replace_silu = False, use_customsilu = False):#, out_dimList = [128, 256, 512, 1024]
         super(TorchEfficientNet, self).__init__(finetune)
         
         if architecture.find("0") != -1:
@@ -520,20 +520,20 @@ class TorchEfficientNet(BaseEncoder):
         # if len(out_dimList) == 0:
         #     self.conv_convert_list = None
         # else:
-        if len(out_dimList) != 0:
-            assert len(out_dimList) == 4
+        # if len(out_dimList) != 0:
+        #     assert len(out_dimList) == 4
             
-            norm = 'BN'
-            act = 'ReLU'
-            convert1 = myConv(self.dimList[0], out_dimList[0], kSize=1, stride=1, padding=0, bias=False, 
-                            norm=norm, act=act, num_groups=self.dimList[0]//16)
-            convert2 = myConv(self.dimList[1], out_dimList[1], kSize=1, stride=1, padding=0, bias=False, 
-                            norm=norm, act=act, num_groups=self.dimList[1]//16)
-            convert3 = myConv(self.dimList[2], out_dimList[2], kSize=1, stride=1, padding=0, bias=False, 
-                            norm=norm, act=act, num_groups=self.dimList[2]//16)
-            convert4 = myConv(self.dimList[3], out_dimList[3], kSize=1, stride=1, padding=0, bias=False, 
-                            norm=norm, act=act, num_groups=self.dimList[3]//16)
-            self.conv_convert_list = nn.ModuleList([convert1, convert2, convert3, convert4])
+        #     norm = 'BN'
+        #     act = 'ReLU'
+        #     convert1 = myConv(self.dimList[0], out_dimList[0], kSize=1, stride=1, padding=0, bias=False, 
+        #                     norm=norm, act=act, num_groups=self.dimList[0]//16)
+        #     convert2 = myConv(self.dimList[1], out_dimList[1], kSize=1, stride=1, padding=0, bias=False, 
+        #                     norm=norm, act=act, num_groups=self.dimList[1]//16)
+        #     convert3 = myConv(self.dimList[2], out_dimList[2], kSize=1, stride=1, padding=0, bias=False, 
+        #                     norm=norm, act=act, num_groups=self.dimList[2]//16)
+        #     convert4 = myConv(self.dimList[3], out_dimList[3], kSize=1, stride=1, padding=0, bias=False, 
+        #                     norm=norm, act=act, num_groups=self.dimList[3]//16)
+        #     self.conv_convert_list = nn.ModuleList([convert1, convert2, convert3, convert4])
         
         self._freeze_stages()
         
@@ -548,11 +548,11 @@ class TorchEfficientNet(BaseEncoder):
                 for m, n in v._modules.items():
                     feature = n(feature)
                     if self.block_idx[block_cnt] == eval(m):
-                        if self.conv_convert_list is None:
-                            out_featList.append(feature)
-                        else:
-                            converted_feat = self.conv_convert_list[block_cnt](feature)
-                            out_featList.append(converted_feat)
+                        # if self.conv_convert_list is None:
+                        out_featList.append(feature)
+                        # else:
+                        #     converted_feat = self.conv_convert_list[block_cnt](feature)
+                        #     out_featList.append(converted_feat)
                         block_cnt += 1
                         if block_cnt == 4:
                             break

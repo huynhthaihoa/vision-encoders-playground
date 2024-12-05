@@ -14,14 +14,14 @@ class YOLOv10(BaseEncoder):
     def __init__(self, architecture="yolov10n", 
                 pretrained=False, 
                 finetune=False, 
-                out_dimList = [],
+                # out_dimList = [],
                 replace_silu=False, 
                 use_customsilu=False,                
                  ch=3, nc=None, verbose=True):  # model, input channels, number of classes
         """Initialize the YOLOv8 detection model with the given config and parameters."""
         super(YOLOv10, self).__init__(finetune)
        
-        cfg = f"networks/encoders/ultralytics/cfg/models/v10/{architecture}.yaml"
+        cfg = f"encoders/ultralytics/cfg/models/v10/{architecture}.yaml"
         
         self.model = FeatureExtraction(cfg)
 
@@ -44,7 +44,7 @@ class YOLOv10(BaseEncoder):
         elif architecture.find('yolov10x') != -1:
             self.dimList = [320, 640, 640]
             
-        self.make_conv_convert_list(out_dimList) 
+        # self.make_conv_convert_list(out_dimList) 
         
         if pretrained:
             if os.path.exists('ultralytics'):
@@ -68,10 +68,10 @@ class YOLOv10(BaseEncoder):
         
     def forward(self, x):
         feats = self.model.forward(x)
-        if self.conv_convert_list is not None:
-            converted_feats = list()
-            for i, feature in enumerate(feats):
-                converted_feat = self.conv_convert_list[i](feature)
-                converted_feats.append(converted_feat)
-            return converted_feats 
+        # if self.conv_convert_list is not None:
+        #     converted_feats = list()
+        #     for i, feature in enumerate(feats):
+        #         converted_feat = self.conv_convert_list[i](feature)
+        #         converted_feats.append(converted_feat)
+        #     return converted_feats 
         return feats       

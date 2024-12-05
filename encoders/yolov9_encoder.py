@@ -19,20 +19,20 @@ class YOLOv9(BaseEncoder):
         architecture='yolov9-c',
         pretrained=True, 
         finetune=False, 
-        out_dimList = [128, 256, 512, 1024],                
+        # out_dimList = [128, 256, 512, 1024],                
         replace_silu=False, 
         use_customsilu=False,  
         ch=3, nc=None, anchors=None):  # model, input channels, number of classes
         super(YOLOv9, self).__init__(finetune)
         
         if architecture == 'yolov9-c':
-            cfg = 'networks/encoders/yolov9/config/yolov9-c.yaml'
+            cfg = 'encoders/yolov9/config/yolov9-c.yaml'
         elif architecture == 'yolov9-e':
-            cfg = 'networks/encoders/yolov9/config/yolov9-e.yaml'
+            cfg = 'encoders/yolov9/config/yolov9-e.yaml'
         elif architecture == 'gelan-c':
-            cfg = 'networks/encoders/yolov9/config/gelan-c.yaml'
+            cfg = 'encoders/yolov9/config/gelan-c.yaml'
         elif architecture == 'gelan-e':
-            cfg = 'networks/encoders/yolov9/config/gelan-e.yaml'
+            cfg = 'encoders/yolov9/config/gelan-e.yaml'
         
         if isinstance(cfg, dict):
             self.yaml = cfg  # model dict
@@ -66,16 +66,16 @@ class YOLOv9(BaseEncoder):
         
         self.dimList = feats[-self.anchors:]
         
-        self.make_conv_convert_list(out_dimList)  
+        # self.make_conv_convert_list(out_dimList)  
         
         if pretrained:
             if os.path.exists('models'):
                 shutil.rmtree('models')
-            shutil.copytree('networks/encoders/yolov9', 'models')
+            shutil.copytree('encoders/yolov9', 'models')
             # os.makedirs('models')#, exist_ok=True)
-            # src_files = os.listdir('networks/encoders/yolov9/')
+            # src_files = os.listdir('encoders/yolov9/')
             # for file_name in src_files:
-            #     src_file_name = os.path.join('networks/encoders/yolov9/', file_name)
+            #     src_file_name = os.path.join('encoders/yolov9/', file_name)
             #     if os.path.isfile(src_file_name):
             #         dst_file_name = os.path.join('models', file_name)
             #         copy(src_file_name, dst_file_name)
@@ -108,12 +108,12 @@ class YOLOv9(BaseEncoder):
                 feats.append(feat)
         
         feats = feats[-self.anchors:]
-        if self.conv_convert_list is not None:
-            converted_feats = list()
-            for i, feature in enumerate(feats):
-                converted_feat = self.conv_convert_list[i](feature)
-                converted_feats.append(converted_feat)
-            return converted_feats        
+        # if self.conv_convert_list is not None:
+        #     converted_feats = list()
+        #     for i, feature in enumerate(feats):
+        #         converted_feat = self.conv_convert_list[i](feature)
+        #         converted_feats.append(converted_feat)
+        #     return converted_feats        
         return feats
 
 def make_divisible(x, divisor):

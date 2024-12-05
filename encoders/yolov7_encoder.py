@@ -19,26 +19,26 @@ class YOLOv7(BaseEncoder):
         architecture='yolov7',
         pretrained=True, 
         finetune=False, 
-        out_dimList = [],
+        # out_dimList = [],
         replace_silu=False, 
         use_customsilu=False,                
         ch=3, nc=None, anchors=None):  # model, input channels, number of classes
         super(YOLOv7, self).__init__(finetune)
         
         if architecture == 'yolov7':
-            cfg = 'networks/encoders/yolov7/config/yolov7.yaml'
+            cfg = 'encoders/yolov7/config/yolov7.yaml'
         elif architecture == 'yolov7x':
-            cfg = 'networks/encoders/yolov7/config/yolov7x.yaml'
+            cfg = 'encoders/yolov7/config/yolov7x.yaml'
         elif architecture == 'yolov7-w6':
-            cfg = 'networks/encoders/yolov7/config/yolov7-w6.yaml'
+            cfg = 'encoders/yolov7/config/yolov7-w6.yaml'
         elif architecture == 'yolov7-tiny':
-            cfg = 'networks/encoders/yolov7/config/yolov7-tiny.yaml'
+            cfg = 'encoders/yolov7/config/yolov7-tiny.yaml'
         elif architecture == 'yolov7-e6e':
-            cfg = 'networks/encoders/yolov7/config/yolov7-e6e.yaml'
+            cfg = 'encoders/yolov7/config/yolov7-e6e.yaml'
         elif architecture == 'yolov7-e6':
-            cfg = 'networks/encoders/yolov7/config/yolov7-e6.yaml'
+            cfg = 'encoders/yolov7/config/yolov7-e6.yaml'
         elif architecture == 'yolov7-d6':
-            cfg = 'networks/encoders/yolov7/config/yolov7-d6.yaml'
+            cfg = 'encoders/yolov7/config/yolov7-d6.yaml'
         
         self.traced = False
         if isinstance(cfg, dict):
@@ -72,16 +72,16 @@ class YOLOv7(BaseEncoder):
         
         self.dimList = feats[-self.anchors:]
         
-        self.make_conv_convert_list(out_dimList)  
+        # self.make_conv_convert_list(out_dimList)  
         
         if pretrained:
             if os.path.exists('models'):
                 shutil.rmtree('models')
             # os.makedirs('models')#, exist_ok=True)
-            shutil.copytree('networks/encoders/yolov7', 'models')
-            # src_files = os.listdir('networks/encoders/yolov7/')
+            shutil.copytree('encoders/yolov7', 'models')
+            # src_files = os.listdir('encoders/yolov7/')
             # for file_name in src_files:
-            #     src_file_name = os.path.join('networks/encoders/yolov7/', file_name)
+            #     src_file_name = os.path.join('encoders/yolov7/', file_name)
             #     if os.path.isfile(src_file_name):
             #         dst_file_name = os.path.join('models', file_name)
             #         shutil.copy(src_file_name, dst_file_name)
@@ -119,12 +119,12 @@ class YOLOv7(BaseEncoder):
             y.append(x if m.i in self.save else None)  # save output
 
         feats = y[-self.anchors:]
-        if self.conv_convert_list is not None:
-            converted_feats = list()
-            for i, feature in enumerate(feats):
-                converted_feat = self.conv_convert_list[i](feature)
-                converted_feats.append(converted_feat)
-            return converted_feats        
+        # if self.conv_convert_list is not None:
+        #     converted_feats = list()
+        #     for i, feature in enumerate(feats):
+        #         converted_feat = self.conv_convert_list[i](feature)
+        #         converted_feats.append(converted_feat)
+        #     return converted_feats        
         return feats
     
 # def make_divisible(x, divisor):

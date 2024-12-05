@@ -8,7 +8,7 @@ import torch.nn.init as init
 from torch.nn.parameter import Parameter
 # from yolov6.utils.general import download_ckpt
 
-from ...class_utils import CustomHardsigmoid, CustomHardswish
+from class_utils import CustomHardsigmoidMul, CustomHardswish
 
 activation_table = {'relu':nn.ReLU(),
                     'silu':nn.SiLU(),
@@ -767,7 +767,7 @@ class SEBlock(nn.Module):
             kernel_size=1,
             stride=1,
             padding=0)
-        self.hardsigmoid = CustomHardsigmoid()#nn.Hardsigmoid()
+        self.hardsigmoid = CustomHardsigmoidMul()#nn.Hardsigmoid()
 
     def forward(self, x):
         identity = x
@@ -996,3 +996,62 @@ class CSPBlock(nn.Module):
         x = torch.cat((x_1, x_2), axis=1)
         x = self.conv_3(x)
         return x
+
+class BepC3(nn.Module):
+    '''CSPStackRep Block'''
+    def __init__(self, in_channels, out_channels, n=1, e=0.5, block=RepVGGBlock):
+        super().__init__()
+        c_ = int(out_channels * e)  # hidden channels
+        self.cv1 = ConvBNReLU(in_channels, c_, 1, 1)
+        self.cv2 = ConvBNReLU(in_channels, c_, 1, 1)
+        self.cv3 = ConvBNReLU(2 * c_, out_channels, 1, 1)
+        if block == ConvBNSiLU:
+            self.cv1 = ConvBNSiLU(in_channels, c_, 1, 1)
+            self.cv2 = ConvBNSiLU(in_channels, c_, 1, 1)
+            self.cv3 = ConvBNSiLU(2 * c_, out_channels, 1, 1)
+
+        self.m = RepBlock(in_channels=c_, out_channels=c_, n=n, block=BottleRep, basic_block=block)
+
+    def forward(self, x):
+        return self.cv3(torch.cat((self.m(self.cv1(x)), self.cv2(x)), dim=1))
+    
+class MBLABlock(nn.Module):
+    ''' Multi Branch Layer Aggregation Block'''
+    def __init__(self, in_channels, out_channels, n=1, e=0.5, block=RepVGGBlock):
+        super().__init__()
+        n = n // 2
+        if n <= 0:
+            n = 1
+
+        # max add one branch
+        if n == 1:
+            n_list = [0, 1]
+        else:
+            extra_branch_steps = 1
+            while extra_branch_steps * 2 < n:
+                extra_branch_steps *= 2
+            n_list = [0, extra_branch_steps, n]
+        branch_num = len(n_list)
+
+        c_ = int(out_channels * e)  # hidden channels
+        self.c = c_
+        self.cv1 = ConvModule(in_channels, branch_num * self.c, 1, 1, 'relu', bias=False)
+        self.cv2 = ConvModule((sum(n_list) + branch_num) * self.c, out_channels, 1, 1,'relu', bias=False)
+
+        if block == ConvBNSiLU:
+            self.cv1 = ConvModule(in_channels, branch_num * self.c, 1, 1, 'silu', bias=False)
+            self.cv2 = ConvModule((sum(n_list) + branch_num) * self.c, out_channels, 1, 1,'silu', bias=False)
+
+        self.m = nn.ModuleList()
+        for n_list_i in n_list[1:]:
+            self.m.append(nn.Sequential(*(BottleRep3(self.c, self.c, basic_block=block, weight=True) for _ in range(n_list_i))))
+
+        self.split_num = tuple([self.c]*branch_num)
+
+    def forward(self, x):
+        y = list(self.cv1(x).split(self.split_num, 1))
+        all_y = [y[0]]
+        for m_idx, m_i in enumerate(self.m):
+            all_y.append(y[m_idx+1])
+            all_y.extend(m(all_y[-1]) for m in m_i)
+        return self.cv2(torch.cat(all_y, 1))

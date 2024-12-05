@@ -19,7 +19,7 @@ class MobileOne(BaseEncoder):
                  inference_mode: bool = False,
                  pretrained = False,
                  finetune = False,
-                 out_dimList = [],
+                #  out_dimList = [],
                  use_5_feat = False) -> None:
                 #  num_blocks_per_stage: List[int] = [2, 8, 10, 1],
                 #  num_classes: int = 1000,
@@ -94,7 +94,7 @@ class MobileOne(BaseEncoder):
                                        num_se_blocks=num_blocks_per_stage[3] if use_se else 0)
         self.dimList.append(int(512 * width_multipliers[3]))
         
-        self.make_conv_convert_list(out_dimList)
+        # self.make_conv_convert_list(out_dimList)
 
         if pretrained:
             ckpt = f"{architecture}_unfused.pth.tar"
@@ -157,39 +157,39 @@ class MobileOne(BaseEncoder):
         
         x_2 = self.stage0(x) # /2
         if len(self.dimList) == 5:
-            if self.conv_convert_list is not None:
-                converted_feat = self.conv_convert_list[0](x_2)
-                out_featList.append(converted_feat)
-            else:
-                out_featList.append(x_2)
+            # if self.conv_convert_list is not None:
+            #     converted_feat = self.conv_convert_list[0](x_2)
+            #     out_featList.append(converted_feat)
+            # else:
+            out_featList.append(x_2)
             
         x_4 = self.stage1(x_2) # /4
-        if self.conv_convert_list is not None:
-            converted_feat = self.conv_convert_list[-4](x_4)
-            out_featList.append(converted_feat)
-        else:
-            out_featList.append(x_4)
+        # if self.conv_convert_list is not None:
+        #     converted_feat = self.conv_convert_list[-4](x_4)
+        #     out_featList.append(converted_feat)
+        # else:
+        out_featList.append(x_4)
         
         x_8 = self.stage2(x_4) # /8
-        if self.conv_convert_list is not None:
-            converted_feat = self.conv_convert_list[-3](x_8)
-            out_featList.append(converted_feat)
-        else:
-            out_featList.append(x_8)
+        # if self.conv_convert_list is not None:
+        #     converted_feat = self.conv_convert_list[-3](x_8)
+        #     out_featList.append(converted_feat)
+        # else:
+        out_featList.append(x_8)
         
         x_16 = self.stage3(x_8) # /16
-        if self.conv_convert_list is not None:
-            converted_feat = self.conv_convert_list[-2](x_16)
-            out_featList.append(converted_feat)
-        else:
-            out_featList.append(x_16)
+        # if self.conv_convert_list is not None:
+        #     converted_feat = self.conv_convert_list[-2](x_16)
+        #     out_featList.append(converted_feat)
+        # else:
+        out_featList.append(x_16)
         
         x_32 = self.stage4(x_16) # /32
-        if self.conv_convert_list is not None:
-            converted_feat = self.conv_convert_list[-1](x_32)
-            out_featList.append(converted_feat)
-        else:
-            out_featList.append(x_32)
+        # if self.conv_convert_list is not None:
+        #     converted_feat = self.conv_convert_list[-1](x_32)
+        #     out_featList.append(converted_feat)
+        # else:
+        out_featList.append(x_32)
                     
         return out_featList
     

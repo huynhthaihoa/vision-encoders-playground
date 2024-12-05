@@ -558,7 +558,7 @@ class RTDetTR(BaseEncoder):
             self.encoder = HybridEncoder(in_channels=in_channels, hidden_dim=hidden_dim, expansion=expansion)
             self.dimList = [hidden_dim, hidden_dim, hidden_dim]
             
-        self.make_conv_convert_list(out_dimList)
+        # self.make_conv_convert_list(out_dimList)
             
         if pretrained:
             ckpt_file = os.path.basename(pretrained_url)
@@ -587,20 +587,20 @@ class RTDetTR(BaseEncoder):
         output = output[1:]
         if self.encoder is not None:
             output_2 = self.encoder(output)
-            if self.conv_convert_list is not None:
-                out_featList = list()
-                for i, feature in enumerate(output_2):
-                    converted_feat = self.conv_convert_list[i](feature)
-                    out_featList.append(converted_feat)
-                return out_featList
+            # if self.conv_convert_list is not None:
+            #     out_featList = list()
+                # for i, feature in enumerate(output_2):
+                #     converted_feat = self.conv_convert_list[i](feature)
+                #     out_featList.append(converted_feat)
+                # return out_featList
             return output_2
                 
-        if self.conv_convert_list is not None:
-            out_featList = list()
-            for i, feature in enumerate(output):
-                converted_feat = self.conv_convert_list[i](feature)
-                out_featList.append(converted_feat)
-            return out_featList
+        # if self.conv_convert_list is not None:
+        #     out_featList = list()
+        #     for i, feature in enumerate(output):
+        #         converted_feat = self.conv_convert_list[i](feature)
+        #         out_featList.append(converted_feat)
+        #     return out_featList
         return output
                 
                 

@@ -22,8 +22,8 @@ class YOLOv6(BaseEncoder):
     def __init__(self, architecture='yolov6s', 
                        pretrained=False, 
                        finetune=False, 
-                       out_dimList = [], 
-                       use_5_feat=False,
+                    #    out_dimList = [], 
+                    #    use_5_feat=False,
                        replace_silu=False, 
                        use_customsilu=False,
                        channels=3):#, num_classes=None, fuse_ab=False, distill_ns=False):  # model, input channels, number of classes
@@ -35,27 +35,27 @@ class YOLOv6(BaseEncoder):
         if architecture.find('yolov6s') != -1:
             if architecture.find('yolov6s6') != -1:
                 self.is_p6 = True
-                config = Config.fromfile('networks/encoders/yolov6/configs/yolov6s6.py')
+                config = Config.fromfile('encoders/yolov6/configs/yolov6s6.py')
             else:
-                config = Config.fromfile('networks/encoders/yolov6/configs/yolov6s.py')
+                config = Config.fromfile('encoders/yolov6/configs/yolov6s.py')
         elif architecture.find('yolov6n') != -1:
             if architecture.find('yolov6n6') != -1:
                 self.is_p6 = True
-                config = Config.fromfile('networks/encoders/yolov6/configs/yolov6n6.py')
+                config = Config.fromfile('encoders/yolov6/configs/yolov6n6.py')
             else:
-                config = Config.fromfile('networks/encoders/yolov6/configs/yolov6n.py')
+                config = Config.fromfile('encoders/yolov6/configs/yolov6n.py')
         elif architecture.find('yolov6m') != -1:
             if architecture.find('yolov6m6') != -1:
                 self.is_p6 = True
-                config = Config.fromfile('networks/encoders/yolov6/configs/yolov6m6.py')
+                config = Config.fromfile('encoders/yolov6/configs/yolov6m6.py')
             else:
-                config = Config.fromfile('networks/encoders/yolov6/configs/yolov6m.py')
+                config = Config.fromfile('encoders/yolov6/configs/yolov6m.py')
         elif architecture.find('yolov6l') != -1:
             if architecture.find('yolov6l6') != -1:
                 self.is_p6 = True
-                config = Config.fromfile('networks/encoders/yolov6/configs/yolov6l6.py')
+                config = Config.fromfile('encoders/yolov6/configs/yolov6l6.py')
             else:
-                config = Config.fromfile('networks/encoders/yolov6/configs/yolov6l.py')
+                config = Config.fromfile('encoders/yolov6/configs/yolov6l.py')
         
         if not hasattr(config, 'training_mode'):
             setattr(config, 'training_mode', 'repvgg')
@@ -79,13 +79,13 @@ class YOLOv6(BaseEncoder):
             else:
                 self.dimList = [channels_list[0], channels_list[1], channels_list[6], channels_list[8], channels_list[10]]
             
-        if not use_5_feat:
-            # if self.is_p6:
-            #     self.dimList = self.dimList[:4]
-            # else:
-            self.dimList = self.dimList[1:]
+        # if not use_5_feat:
+        #     # if self.is_p6:
+        #     #     self.dimList = self.dimList[:4]
+        #     # else:
+        #     self.dimList = self.dimList[1:]
                                         
-        self.make_conv_convert_list(out_dimList)     
+        # self.make_conv_convert_list(out_dimList)     
         
         if pretrained:
             ckpt_name = os.path.basename(ckpt_path)
@@ -114,12 +114,12 @@ class YOLOv6(BaseEncoder):
         if len(self.dimList) == 4:
             x = x[1:]
                     
-        if self.conv_convert_list is not None:
-            out_featList = list()
-            for i, feature in enumerate(x):
-                converted_feat = self.conv_convert_list[i](feature)
-                out_featList.append(converted_feat)
-            return out_featList
+        # if self.conv_convert_list is not None:
+        #     out_featList = list()
+        #     for i, feature in enumerate(x):
+        #         converted_feat = self.conv_convert_list[i](feature)
+        #         out_featList.append(converted_feat)
+        #     return out_featList
 
         return x
 

@@ -592,7 +592,7 @@ class HGNetv2(BaseEncoder):
         if freeze_norm:
             self._freeze_norm(self)
             
-        self.make_conv_convert_list(out_dimList)
+        # self.make_conv_convert_list(out_dimList)
         
         if pretrained:
             RED, GREEN, RESET = "\033[91m", "\033[92m", "\033[0m"
@@ -667,9 +667,9 @@ class HGNetv2(BaseEncoder):
         for idx, stage in enumerate(self.stages):
             x = stage(x)
             if idx in self.return_idx:
-                if self.conv_convert_list is not None:
-                    outs.append(self.conv_convert_list[convert_idx](x))
-                    convert_idx += 1
-                else:
-                    outs.append(x)
+                # if self.conv_convert_list is not None:
+                #     outs.append(self.conv_convert_list[convert_idx](x))
+                #     convert_idx += 1
+                # else:
+                outs.append(x)
         return outs

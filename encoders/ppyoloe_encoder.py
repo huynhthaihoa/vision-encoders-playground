@@ -672,7 +672,7 @@ class PPYOLOE(BaseEncoder):
         architecture='ppyoloe_s', 
         pretrained=True, 
         finetune=False, 
-        out_dimList = [], 
+        # out_dimList = [], 
         # use_5_feat=False,
         replace_silu=False, 
         use_customsilu=False,
@@ -750,7 +750,7 @@ class PPYOLOE(BaseEncoder):
             self.dimList = self.neck._out_channels
             self.dimList.insert(0, self.backbone._out_channels[0])
 
-        self.make_conv_convert_list(out_dimList)
+        # self.make_conv_convert_list(out_dimList)
         
         if pretrained:
             if architecture.find('ppyoloe_s') != -1:
@@ -778,11 +778,11 @@ class PPYOLOE(BaseEncoder):
         if self.neck is not None:
             features[-3:] = self.neck(features[-3:])
         
-        if self.conv_convert_list is not None:
-            out_featList = list()
-            for i, feature in enumerate(features):
-                converted_feat = self.conv_convert_list[i](feature)
-                out_featList.append(converted_feat)
-            return out_featList
+        # if self.conv_convert_list is not None:
+        #     out_featList = list()
+        #     for i, feature in enumerate(features):
+        #         converted_feat = self.conv_convert_list[i](feature)
+        #         out_featList.append(converted_feat)
+        #     return out_featList
         
         return features

@@ -86,7 +86,8 @@ class ConvNeXtV2(BaseEncoder):
         drop_path_rate (float): Stochastic depth rate. Default: 0.
         layer_scale_init_value (float): Init value for Layer Scale. Default: 1e-6.
     """
-    def __init__(self, architecture='atto', pretrained=True, finetune=False, out_dimList = [64, 128, 256, 512, 1024], replace_gelu=False,
+    def __init__(self, architecture='atto', pretrained=True, finetune=False, 
+                 replace_gelu=False,
                  in_chans=3, 
                  drop_path_rate=0.
                  ):
@@ -162,7 +163,7 @@ class ConvNeXtV2(BaseEncoder):
                 elif architecture.find('512') != -1:
                     model_url = "https://dl.fbaipublicfiles.com/convnext/convnextv2/im22k/convnextv2_huge_22k_512_ema.pt"
             
-        self.make_conv_convert_list(out_dimList)
+        # self.make_conv_convert_list(out_dimList)
  
         self.depths = depths
         self.downsample_layers = nn.ModuleList() # stem and 3 intermediate downsampling conv layers
@@ -244,9 +245,9 @@ class ConvNeXtV2(BaseEncoder):
         for i in range(4):
             x = self.downsample_layers[i](x)
             x = self.stages[i](x)
-            if self.conv_convert_list is None:
-                out_featList.append(x)
-            else:
-                converted_feat = self.conv_convert_list[i](x)
-                out_featList.append(converted_feat)
+            # if self.conv_convert_list is None:
+            out_featList.append(x)
+            # else:
+            #     converted_feat = self.conv_convert_list[i](x)
+            #     out_featList.append(converted_feat)
         return out_featList

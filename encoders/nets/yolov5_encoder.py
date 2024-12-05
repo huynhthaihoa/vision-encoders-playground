@@ -7,8 +7,8 @@ import torch.nn as nn
 import torch
 from shutil import copyfile
 
-from ...function_utils import fuse_conv#, replace_layers
-from ...class_utils import CustomSiLU
+from function_utils import fuse_conv#, replace_layers
+from class_utils import CustomSiLU
 from ..base_encoder import BaseEncoder
 
 def pad(k, p):
@@ -152,7 +152,7 @@ class DarkNet(torch.nn.Module):
         self.p4 = torch.nn.Sequential(*p4)
         self.p5 = torch.nn.Sequential(*p5)
         
-        self.use_5_feat = use_5_feat
+        # self.use_5_feat = use_5_feat
 
     def forward(self, x):
         e1 = self.p1(x)
@@ -160,12 +160,12 @@ class DarkNet(torch.nn.Module):
         e3 = self.p3(e2)
         e4 = self.p4(e3)
         e5 = self.p5(e4)
-        if self.use_5_feat:
-            return e1, e2, e3, e4, e5
+        # if self.use_5_feat:
+        #     return e1, e2, e3, e4, e5
         return e2, e3, e4, e5
 
 class DarkFPN(torch.nn.Module):
-    def __init__(self, filters, num_dep, silu_opt=0, use_5_feat=False):
+    def __init__(self, filters, num_dep, silu_opt=0):#, use_5_feat=False):
         super().__init__()
         self.up = torch.nn.Upsample(None, 2)
         self.h1 = Conv(filters[5], filters[4], 1, 1, silu_opt=silu_opt)
@@ -176,13 +176,13 @@ class DarkFPN(torch.nn.Module):
         self.h6 = CSP(2 * filters[3], filters[4], num_dep[0], False, silu_opt=silu_opt)
         self.h7 = Conv(filters[4], filters[4], 3, 2, silu_opt=silu_opt)
         self.h8 = CSP(2 * filters[4], filters[5], num_dep[0], False, silu_opt=silu_opt)
-        self.use_5_feat = use_5_feat
+        # self.use_5_feat = use_5_feat
 
     def forward(self, x):
-        if self.use_5_feat:
-            e1, e2, e3, e4, e5 = x
-        else:
-            e2, e3, e4, e5 = x
+        # if self.use_5_feat:
+        #     e1, e2, e3, e4, e5 = x
+        # else:
+        e2, e3, e4, e5 = x
             
         n1 = self.h1(e5)
         n2 = self.h2(torch.cat([self.up(n1), e4], 1))
@@ -196,12 +196,12 @@ class DarkFPN(torch.nn.Module):
         n7 = self.h7(n6)
         n8 = self.h8(torch.cat([n7, n1], 1))
 
-        if self.use_5_feat:
-            return e1, e2, n4, n6, n8    
+        # if self.use_5_feat:
+        #     return e1, e2, n4, n6, n8    
         return e2, n4, n6, n8
 
 class YOLOv5(BaseEncoder):
-    def __init__(self, architecture, pretrained=False, out_dimList = [], finetune=False, keepnum_maxpool=[False, False, False], replace_silu=False, use_customsilu=False, use_5_feat=False):
+    def __init__(self, architecture, pretrained=False, finetune=False, keepnum_maxpool=[False, False, False], replace_silu=False, use_customsilu=False):#, out_dimList = [], use_5_feat=False):
         super(YOLOv5, self).__init__(finetune)
         
         if architecture.find('yolov5n') != -1:
@@ -240,20 +240,20 @@ class YOLOv5(BaseEncoder):
         else:
             replace_maxpool = False
                                     
-        self.net = DarkNet(width, depth, replace_maxpool, keepnum_maxpool, silu_opt, use_5_feat)
+        self.net = DarkNet(width, depth, replace_maxpool, keepnum_maxpool, silu_opt)#, use_5_feat)
                 
         if architecture.endswith('truncate') is True:
             self.fpn = None
         else:
-            self.fpn = DarkFPN(width, depth, silu_opt, use_5_feat)
+            self.fpn = DarkFPN(width, depth, silu_opt)#, use_5_feat)
 
         # for the decoder
-        if use_5_feat:
-            self.dimList = width[-5:]
-        else:
-            self.dimList = width[-4:]
+        # if use_5_feat:
+        #     self.dimList = width[-5:]
+        # else:
+        self.dimList = width[-4:]
                     
-        self.make_conv_convert_list(out_dimList)   
+        # self.make_conv_convert_list(out_dimList)   
              
         if pretrained:
             ckpt = f"v5_{architecture[-1]}.pt"
@@ -275,12 +275,12 @@ class YOLOv5(BaseEncoder):
         if self.fpn is not None:
             x = self.fpn(x)
         
-        if self.conv_convert_list is not None:
-            out_featList = []
-            for i, feature in enumerate(x):
-                converted_feat = self.conv_convert_list[i](feature)
-                out_featList.append(converted_feat)
-            return out_featList
+        # if self.conv_convert_list is not None:
+        #     out_featList = []
+        #     for i, feature in enumerate(x):
+        #         converted_feat = self.conv_convert_list[i](feature)
+        #         out_featList.append(converted_feat)
+        #     return out_featList
         
         return x
 

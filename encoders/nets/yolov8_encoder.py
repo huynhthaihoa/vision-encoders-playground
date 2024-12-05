@@ -7,8 +7,8 @@ import os
 
 from shutil import copyfile
 
-from ...function_utils import fuse_conv
-from ...class_utils import CustomSiLU
+from function_utils import fuse_conv
+from class_utils import CustomSiLU
 from ..base_encoder import BaseEncoder
 
 class Conv(torch.nn.Module):
@@ -88,7 +88,7 @@ class SPP(torch.nn.Module):
         return self.conv2(torch.cat([x, y1, y2, y3], 1))
 
 class DarkNet(torch.nn.Module):
-    def __init__(self, width, depth, replace_maxpool=False, keepnum_maxpool=[False, False, False], silu_opt=0, use_5_feat=False):
+    def __init__(self, width, depth, replace_maxpool=False, keepnum_maxpool=[False, False, False], silu_opt=0):#, use_5_feat=False):
         super().__init__()
         self.p1 = []
         self.p2 = []
@@ -114,7 +114,7 @@ class DarkNet(torch.nn.Module):
         self.p4 = torch.nn.Sequential(*self.p4)
         self.p5 = torch.nn.Sequential(*self.p5)
         
-        self.use_5_feat = use_5_feat
+        # self.use_5_feat = use_5_feat
 
     def forward(self, x):
         e1 = self.p1(x)
@@ -122,12 +122,12 @@ class DarkNet(torch.nn.Module):
         e3 = self.p3(e2)
         e4 = self.p4(e3)
         e5 = self.p5(e4)
-        if self.use_5_feat:
-            return e1, e2, e3, e4, e5
+        # if self.use_5_feat:
+        #     return e1, e2, e3, e4, e5
         return e2, e3, e4, e5
 
 class DarkFPN(torch.nn.Module):
-    def __init__(self, width, depth, silu_opt=0, use_5_feat=False):
+    def __init__(self, width, depth, silu_opt=0):#, use_5_feat=False):
         super().__init__()
         self.up = torch.nn.Upsample(None, 2)
         self.h1 = CSP(width[4] + width[5], width[4], depth[0], False, silu_opt=silu_opt)
@@ -136,19 +136,19 @@ class DarkFPN(torch.nn.Module):
         self.h4 = CSP(width[3] + width[4], width[4], depth[0], False, silu_opt=silu_opt)
         self.h5 = Conv(width[4], width[4], 3, 2, silu_opt=silu_opt)
         self.h6 = CSP(width[4] + width[5], width[5], depth[0], False, silu_opt=silu_opt)
-        self.use_5_feat = use_5_feat
+        # self.use_5_feat = use_5_feat
 
     def forward(self, x):
-        if self.use_5_feat:
-            n1, n2, e3, e4, e5 = x
-        else:
-            n2, e3, e4, e5 = x
+        # if self.use_5_feat:
+        #     n1, n2, e3, e4, e5 = x
+        # else:
+        n2, e3, e4, e5 = x
         n = self.h1(torch.cat([self.up(e5), e4], 1))
         n3 = self.h2(torch.cat([self.up(n), e3], 1))
         n4 = self.h4(torch.cat([self.h3(n3), n], 1))
         n5 = self.h6(torch.cat([self.h5(n4), e5], 1))
-        if self.use_5_feat:
-            return n1, n2, n3, n4, n5
+        # if self.use_5_feat:
+        #     return n1, n2, n3, n4, n5
         return n2, n3, n4, n5
 
 # class DFL(torch.nn.Module):
@@ -167,7 +167,7 @@ class DarkFPN(torch.nn.Module):
 #         return self.conv(x.softmax(1)).view(b, 4, a)
 
 class YOLOv8(BaseEncoder):
-    def __init__(self, architecture, pretrained=False, out_dimList = [], finetune=False, keepnum_maxpool=[False, False, False], replace_silu=False, use_customsilu=False, use_5_feat=False):
+    def __init__(self, architecture, pretrained=False, finetune=False, keepnum_maxpool=[False, False, False], replace_silu=False, use_customsilu=False):#, out_dimList = [], use_5_feat=False):
         super(YOLOv8, self).__init__(finetune)
         
         if architecture.find('yolov8n') != -1:
@@ -206,20 +206,20 @@ class YOLOv8(BaseEncoder):
         else:
             replace_maxpool = False
         
-        self.net = DarkNet(width, depth, replace_maxpool, keepnum_maxpool, silu_opt, use_5_feat)#, replace_silu)
+        self.net = DarkNet(width, depth, replace_maxpool, keepnum_maxpool, silu_opt)#, use_5_feat)#, replace_silu)
         
         if architecture.endswith('truncate') is True:
             self.fpn = None
         else:
-            self.fpn = DarkFPN(width, depth, silu_opt, use_5_feat)#, replace_silu)
+            self.fpn = DarkFPN(width, depth, silu_opt)#, use_5_feat)#, replace_silu)
             
         # for the decoder
-        if use_5_feat:
-            self.dimList = width[-5:]
-        else:
-            self.dimList = width[-4:]
+        # if use_5_feat:
+        #     self.dimList = width[-5:]
+        # else:
+        self.dimList = width[-4:]
         
-        self.make_conv_convert_list(out_dimList)
+        # self.make_conv_convert_list(out_dimList)
                 
         if pretrained:
             ckpt = f"v8_{architecture[-1]}.pt"
@@ -242,12 +242,12 @@ class YOLOv8(BaseEncoder):
         if self.fpn is not None:
             x = self.fpn(x)
         
-        if self.conv_convert_list is not None:
-            out_featList = list()
-            for i, feature in enumerate(x):
-                converted_feat = self.conv_convert_list[i](feature)
-                out_featList.append(converted_feat)
-            return out_featList
+        # if self.conv_convert_list is not None:
+        #     out_featList = list()
+        #     for i, feature in enumerate(x):
+        #         converted_feat = self.conv_convert_list[i](feature)
+        #         out_featList.append(converted_feat)
+        #     return out_featList
         
         return x
 

@@ -8,7 +8,7 @@ from class_utils import CustomSiLU
 from .base_encoder import BaseEncoder
 
 class EfficientNet(BaseEncoder):
-    def __init__(self, architecture="efficientnet_b0", pretrained=True, finetune=False, out_dimList = [128, 256, 512, 1024], replace_silu=False, use_customsilu=False, use_5_feat=False):
+    def __init__(self, architecture="efficientnet_b0", pretrained=True, finetune=False, replace_silu=False, use_customsilu=False, use_5_feat=False):
         super(EfficientNet, self).__init__(finetune)
         
         if architecture.find("0") != -1:
@@ -55,7 +55,7 @@ class EfficientNet(BaseEncoder):
             self.dimList.insert(0, 16)
             self.block_idx.insert(0, 3)
         
-        self.make_conv_convert_list(out_dimList)
+        # self.make_conv_convert_list(out_dimList)
     
         self._freeze_stages()
         
@@ -72,21 +72,21 @@ class EfficientNet(BaseEncoder):
                 for m, n in v._modules.items():
                     feature = n(feature)
                     if self.block_idx[block_cnt] == cnt:
-                        if self.conv_convert_list is None:
-                            out_featList.append(feature)
-                        else:
-                            converted_feat = self.conv_convert_list[block_cnt](feature)
-                            out_featList.append(converted_feat)
+                        # if self.conv_convert_list is None:
+                        out_featList.append(feature)
+                        # else:
+                        #     converted_feat = self.conv_convert_list[block_cnt](feature)
+                        #     out_featList.append(converted_feat)
                         block_cnt += 1
                     cnt += 1
             else:
                 feature = v(feature)
                 if self.block_idx[block_cnt] == cnt:
-                    if self.conv_convert_list is None:
-                        out_featList.append(feature)
-                    else:
-                        converted_feat = self.conv_convert_list[block_cnt](feature)
-                        out_featList.append(converted_feat)
+                    # if self.conv_convert_list is None:
+                    out_featList.append(feature)
+                    # else:
+                    #     converted_feat = self.conv_convert_list[block_cnt](feature)
+                    #     out_featList.append(converted_feat)
                     block_cnt += 1
                 cnt += 1        
             
@@ -140,7 +140,7 @@ class EfficientNetAdvProp(BaseEncoder):
             self.dimList.insert(0, 16)
             self.block_idx.insert(0, 3)
         
-        self.make_conv_convert_list(out_dimList)
+        # self.make_conv_convert_list(out_dimList)
         
         self._freeze_stages()
         
@@ -157,21 +157,21 @@ class EfficientNetAdvProp(BaseEncoder):
                 for m, n in v._modules.items():
                     feature = n(feature)
                     if self.block_idx[block_cnt] == cnt:
-                        if self.conv_convert_list is None:
-                            out_featList.append(feature)
-                        else:
-                            converted_feat = self.conv_convert_list[block_cnt](feature)
-                            out_featList.append(converted_feat)
+                        # if self.conv_convert_list is None:
+                        out_featList.append(feature)
+                        # else:
+                        #     converted_feat = self.conv_convert_list[block_cnt](feature)
+                        #     out_featList.append(converted_feat)
                         block_cnt += 1
                     cnt += 1
             else:
                 feature = v(feature)
                 if self.block_idx[block_cnt] == cnt:
-                    if self.conv_convert_list is None:
-                        out_featList.append(feature)
-                    else:
-                        converted_feat = self.conv_convert_list[block_cnt](feature)
-                        out_featList.append(converted_feat)
+                    # if self.conv_convert_list is None:
+                    out_featList.append(feature)
+                    # else:
+                    #     converted_feat = self.conv_convert_list[block_cnt](feature)
+                    #     out_featList.append(converted_feat)
                     block_cnt += 1
                 cnt += 1         
             
@@ -218,7 +218,7 @@ class EfficientNetLite(BaseEncoder):
             self.dimList.insert(0, 16)
             self.block_idx.insert(0, 3)
         
-        self.make_conv_convert_list(out_dimList)
+        # self.make_conv_convert_list(out_dimList)
         
         self._freeze_stages()
         
@@ -235,21 +235,23 @@ class EfficientNetLite(BaseEncoder):
                 for m, n in v._modules.items():
                     feature = n(feature)
                     if self.block_idx[block_cnt] == cnt:
-                        if self.conv_convert_list is None:
-                            out_featList.append(feature)
-                        else:
-                            converted_feat = self.conv_convert_list[block_cnt](feature)
-                            out_featList.append(converted_feat)
+                        out_featList.append(feature)
+                        # if self.conv_convert_list is None:
+                        #     out_featList.append(feature)
+                        # else:
+                        #     converted_feat = self.conv_convert_list[block_cnt](feature)
+                        #     out_featList.append(converted_feat)
                         block_cnt += 1
                     cnt += 1
             else:
                 feature = v(feature)
                 if self.block_idx[block_cnt] == cnt:
-                    if self.conv_convert_list is None:
-                        out_featList.append(feature)
-                    else:
-                        converted_feat = self.conv_convert_list[block_cnt](feature)
-                        out_featList.append(converted_feat)
+                    out_featList.append(feature)
+                    # if self.conv_convert_list is None:
+                    #     out_featList.append(feature)
+                    # else:
+                    #     converted_feat = self.conv_convert_list[block_cnt](feature)
+                    #     out_featList.append(converted_feat)
                     block_cnt += 1
                 cnt += 1           
             

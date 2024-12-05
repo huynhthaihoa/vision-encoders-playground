@@ -337,7 +337,7 @@ class YOLOv11(BaseEncoder):
     def __init__(self, 
                  architecture='yolov11n',
                  pretrained=False,
-                 out_dimList = [],
+                #  out_dimList = [],
                  finetune=False,
                  replace_silu=False,
                  use_customsilu=False,
@@ -401,7 +401,7 @@ class YOLOv11(BaseEncoder):
 
         self.dimList = [width[-3], width[-3], width[-2], width[-1]]
 
-        self.make_conv_convert_list(out_dimList)
+        # self.make_conv_convert_list(out_dimList)
 
         if pretrained:
             ckpt = f"v11_{variant}.pt"
@@ -430,12 +430,12 @@ class YOLOv11(BaseEncoder):
         if self.fpn is not None:
             x = self.fpn(x)
         
-        if self.conv_convert_list is not None:
-            out_featList = list()
-            for i, feature in enumerate(x):
-                converted_feat = self.conv_convert_list[i](feature)
-                out_featList.append(converted_feat)
-            return out_featList
+        # if self.conv_convert_list is not None:
+        #     out_featList = list()
+        #     for i, feature in enumerate(x):
+        #         converted_feat = self.conv_convert_list[i](feature)
+        #         out_featList.append(converted_feat)
+        #     return out_featList
         #print("dimList:", self.dimList)
         
         return x

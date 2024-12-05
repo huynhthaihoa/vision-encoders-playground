@@ -14,7 +14,7 @@ class UltralyticsEncoder(BaseEncoder):
     def __init__(self, architecture="ultralytics_yolov8n", 
                 pretrained=False, 
                 finetune=False, 
-                out_dimList = [],
+                # out_dimList = [],
                 replace_silu=False, 
                 use_customsilu=False,                
                  ch=3, nc=None, verbose=True):  # model, input channels, number of classes
@@ -30,7 +30,7 @@ class UltralyticsEncoder(BaseEncoder):
         if nc and nc != self.yaml["nc"]:
             # LOGGER.info(f"Overriding model.yaml nc={self.yaml['nc']} with nc={nc}")
             self.yaml["nc"] = nc  # override YAML value
-        self.model, self.save, feats = parse_model(deepcopy(self.yaml), ch=ch, verbose=verbose)  # model, savelist
+        self.model, self.save, feats = parse_model(deepcopy(self.yaml), ch=ch)#, verbose=verbose)  # model, savelist
         self.names = {i: f"{i}" for i in range(self.yaml["nc"])}  # default names dict
         self.inplace = self.yaml.get("inplace", True)
 
@@ -59,7 +59,7 @@ class UltralyticsEncoder(BaseEncoder):
         elif architecture.find('yolov8x') != -1:
             self.dimList = [320, 640, 640]
             
-        self.make_conv_convert_list(out_dimList)  
+        # self.make_conv_convert_list(out_dimList)  
         
         if pretrained:
             if os.path.exists('ultralytics'):
@@ -117,10 +117,10 @@ class UltralyticsEncoder(BaseEncoder):
             if feat is not None:
                 feats.append(feat)
         feats = feats[-self.anchors:]
-        if self.conv_convert_list is not None:
-            converted_feats = list()
-            for i, feature in enumerate(feats):
-                converted_feat = self.conv_convert_list[i](feature)
-                converted_feats.append(converted_feat)
-            return converted_feats        
+        # if self.conv_convert_list is not None:
+        #     converted_feats = list()
+        #     for i, feature in enumerate(feats):
+        #         converted_feat = self.conv_convert_list[i](feature)
+        #         converted_feats.append(converted_feat)
+        #     return converted_feats        
         return feats

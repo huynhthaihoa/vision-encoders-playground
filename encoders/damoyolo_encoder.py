@@ -12,8 +12,7 @@ class DAMOYOLO(BaseEncoder):
         self,
         architecture='damoyolo_tinynasl20_t', 
         pretrained=True, 
-        finetune=False, 
-        out_dimList = [], 
+        finetune=False
         ):
             super(DAMOYOLO, self).__init__(finetune)
             
@@ -52,7 +51,7 @@ class DAMOYOLO(BaseEncoder):
             
             self.dimList = self.neck.out_channels
             
-            self.make_conv_convert_list(out_dimList)
+            # self.make_conv_convert_list(out_dimList)
 
             if pretrained:
                 ckpt = os.path.basename(pretrained_url)
@@ -73,10 +72,10 @@ class DAMOYOLO(BaseEncoder):
             feature_outs = self.backbone(x)
             fpn_outs = self.neck(feature_outs)
             
-            if self.conv_convert_list is not None:
-                out_featList = list()
-                for i, feature in enumerate(fpn_outs):
-                    converted_feat = self.conv_convert_list[i](feature)
-                    out_featList.append(converted_feat)
-                return out_featList
+            # if self.conv_convert_list is not None:
+            #     out_featList = list()
+            #     for i, feature in enumerate(fpn_outs):
+            #         converted_feat = self.conv_convert_list[i](feature)
+            #         out_featList.append(converted_feat)
+            #     return out_featList
             return fpn_outs

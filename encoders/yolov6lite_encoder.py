@@ -19,19 +19,19 @@ class YOLOv6Lite(BaseEncoder):
     def __init__(self, architecture='yolov6lites', 
                        pretrained=False, 
                        finetune=False, 
-                       out_dimList = [], 
-                       use_5_feat=False,
+                    #    out_dimList = [], 
+                    #    use_5_feat=False,
                     #    replace_silu=False, 
                     #    use_customsilu=False, 
                        channels=3):  # model, input channels, number of classes
         super(YOLOv6Lite, self).__init__(finetune)
         # Build network
         if architecture.find('yolov6lites') != -1:
-            config = Config.fromfile('networks/encoders/yolov6/configs/yolov6_lite_s.py')
+            config = Config.fromfile('encoders/yolov6/configs/yolov6_lite_s.py')
         elif architecture.find('yolov6litem') != -1:
-            config = Config.fromfile('networks/encoders/yolov6/configs/yolov6_lite_m.py')
+            config = Config.fromfile('encoders/yolov6/configs/yolov6_lite_m.py')
         elif architecture.find('yolov6litel') != -1:
-            config = Config.fromfile('networks/encoders/yolov6/configs/yolov6_lite_l.py')
+            config = Config.fromfile('encoders/yolov6/configs/yolov6_lite_l.py')
             
         self.backbone, self.neck, backbone_channels, neck_unified_channel, ckpt_path = build_network(config, channels)#, num_classes)
 
@@ -49,10 +49,10 @@ class YOLOv6Lite(BaseEncoder):
             self.dimList.insert(0, backbone_channels[0])
             self.dimList.insert(1, backbone_channels[1])
         
-        if not use_5_feat:
-            self.dimList = self.dimList[1:]
+        # if not use_5_feat:
+        #     self.dimList = self.dimList[1:]
         
-        self.make_conv_convert_list(out_dimList)     
+        # self.make_conv_convert_list(out_dimList)     
                 
         if pretrained:
             ckpt_name = os.path.basename(ckpt_path)
@@ -78,12 +78,12 @@ class YOLOv6Lite(BaseEncoder):
         if len(self.dimList) == 4:
             x = x[1:]
                        
-        if self.conv_convert_list is not None:
-            out_featList = list()
-            for i, feature in enumerate(x):
-                converted_feat = self.conv_convert_list[i](feature)
-                out_featList.append(converted_feat)
-            return out_featList
+        # if self.conv_convert_list is not None:
+        #     out_featList = list()
+        #     for i, feature in enumerate(x):
+        #         converted_feat = self.conv_convert_list[i](feature)
+        #         out_featList.append(converted_feat)
+        #     return out_featList
 
         return x
 

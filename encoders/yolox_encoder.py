@@ -292,8 +292,8 @@ class YOLOX(BaseEncoder):
         architecture='yolox_s', 
         pretrained=True, 
         finetune=False, 
-        out_dimList = [128, 256, 512, 1024], 
-        use_5_feat=False,
+        # out_dimList = [128, 256, 512, 1024], 
+        # use_5_feat=False,
         replace_silu=False, 
         use_customsilu=False,
         in_features=["dark2", "dark3", "dark4", "dark5"],
@@ -359,11 +359,11 @@ class YOLOX(BaseEncoder):
         
         self.in_features = in_features
         self.dimList = [int(in_channels[0] // 2 * width), int(in_channels[0] * width), int(in_channels[1] * width), int(in_channels[2] * width)]        
-        if use_5_feat:
-            self.in_features.insert(0, "stem")
-            self.dimList.insert(0, int(in_channels[0] // 4 * width))
+        # if use_5_feat:
+        #     self.in_features.insert(0, "stem")
+        #     self.dimList.insert(0, int(in_channels[0] // 4 * width))
             
-        self.make_conv_convert_list(out_dimList)
+        # self.make_conv_convert_list(out_dimList)
             
         Conv = DWConv if depthwise else BaseConv
 
@@ -419,7 +419,8 @@ class YOLOX(BaseEncoder):
         )
         
         if pretrained:
-            if architecture.endswith('lite'):# is True:
+            # if architecture.endswith('lite'):# is True:
+            if architecture.startswith('ti') is True:
                 if architecture.find('yoloxs') != -1:#http://software-dl.ti.com/jacinto7/esd/modelzoo/latest/models/vision/detection/coco/edgeai-yolox/yolox-s-ti-lite_39p1_57p9_checkpoint.pth
                     ckpt_file = "yolox-s-ti-lite_39p1_57p9_checkpoint.pth"
                 elif architecture.find('yoloxm') != -1:#http://software-dl.ti.com/jacinto7/esd/modelzoo/latest/models/vision/detection/coco/edgeai-yolox/yolox_m_ti_lite_45p5_64p2_checkpoint.pth
