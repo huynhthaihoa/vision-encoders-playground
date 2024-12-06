@@ -16,31 +16,31 @@ class DAMOYOLO(BaseEncoder):
         ):
             super(DAMOYOLO, self).__init__(finetune)
             
-            if architecture == 'damoyolo_tinynasl20_t':
+            if architecture == 'damoyolot':
                 from .damo_yolo.configs.damoyolo_tinynasL20_T import Config
                 # config_path = 'damo_yolo/configs/damoyolo_tinynasL20_T.py'
                 pretrained_url = 'https://idstcv.oss-cn-zhangjiakou.aliyuncs.com/DAMO-YOLO/release_model/clean_model_0317/damoyolo_tinynasL20_T_436.pth'
-            elif architecture == 'damoyolo_tinynasl18_nm':
+            elif architecture == 'damoyolonm':
                 from .damo_yolo.configs.damoyolo_tinynasL18_Nm import Config
                 # config_path = 'damo_yolo/configs/damoyolo_tinynasL18_Nm.py'  
                 pretrained_url = 'https://idstcv.oss-cn-zhangjiakou.aliyuncs.com/DAMO-YOLO/release_model/ckpt/before_distill/damoyolo_nano_middle.pth'    
-            elif architecture == 'damoyolo_tinynasl18_ns':
+            elif architecture == 'damoyolons':
                 from .damo_yolo.configs.damoyolo_tinynasL18_Ns import Config
                 # config_path = 'damo_yolo/configs/damoyolo_tinynasL18_Ns.py'
                 pretrained_url = 'https://idstcv.oss-cn-zhangjiakou.aliyuncs.com/DAMO-YOLO/release_model/ckpt/before_distill/damoyolo_nano_small.pth'
-            elif architecture == 'damoyolo_tinynasl20_nl':
+            elif architecture == 'damoyolonl':
                 from .damo_yolo.configs.damoyolo_tinynasL20_Nl import Config
                 # config_path = 'damo_yolo/configs/damoyolo_tinynasL20_Nl.py'
                 pretrained_url = 'https://idstcv.oss-cn-zhangjiakou.aliyuncs.com/DAMO-YOLO/release_model/ckpt/before_distill/damoyolo_nano_large.pth'
-            elif architecture == 'damoyolo_tinynasl25_s':
+            elif architecture == 'damoyolos':
                 from .damo_yolo.configs.damoyolo_tinynasL25_S import Config
                 # config_path = 'damo_yolo/configs/damoyolo_tinynasL25_S.py'
                 pretrained_url = 'https://idstcv.oss-cn-zhangjiakou.aliyuncs.com/DAMO-YOLO/release_model/clean_model_0317/damoyolo_tinynasL25_S_477.pth'
-            elif architecture == 'damoyolo_tinynasl35_m':
+            elif architecture == 'damoyolom':
                 from .damo_yolo.configs.damoyolo_tinynasL35_M import Config
                 # config_path = 'damo_yolo/configs/damoyolo_tinynasL35_M.py'
                 pretrained_url = 'https://idstcv.oss-cn-zhangjiakou.aliyuncs.com/DAMO-YOLO/release_model/clean_model_0317/damoyolo_tinynasL35_M_502.pth'
-            elif architecture == 'damoyolo_tinynasl45_l':
+            elif architecture == 'damoyolol':
                 from .damo_yolo.configs.damoyolo_tinynasL45_L import Config
                 # config_path = 'damo_yolo/configs/damoyolo_tinynasL45_L.py'
                 pretrained_url = 'https://idstcv.oss-cn-zhangjiakou.aliyuncs.com/DAMO-YOLO/release_model/clean_model_0317/damoyolo_tinynasL45_L_519.pth'

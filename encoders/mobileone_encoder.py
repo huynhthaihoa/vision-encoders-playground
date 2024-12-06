@@ -18,9 +18,9 @@ class MobileOne(BaseEncoder):
                  num_blocks_per_stage: List[int] = [2, 8, 10, 1],
                  inference_mode: bool = False,
                  pretrained = False,
-                 finetune = False,
+                 finetune = False) -> None:#,
                 #  out_dimList = [],
-                 use_5_feat = False) -> None:
+                #  use_5_feat = False) 
                 #  num_blocks_per_stage: List[int] = [2, 8, 10, 1],
                 #  num_classes: int = 1000,
                 #  width_multipliers: Optional[List[float]] = None,
@@ -69,8 +69,8 @@ class MobileOne(BaseEncoder):
         self.stage0 = MobileOneBlock(in_channels=3, out_channels=self.in_planes,
                                      kernel_size=3, stride=2, padding=1,
                                      inference_mode=self.inference_mode)
-        if use_5_feat:
-            self.dimList.append(self.in_planes) # /2
+        # if use_5_feat:
+        #     self.dimList.append(self.in_planes) # /2
             
         self.cur_layer_idx = 1
         
@@ -156,12 +156,12 @@ class MobileOne(BaseEncoder):
         out_featList = list()
         
         x_2 = self.stage0(x) # /2
-        if len(self.dimList) == 5:
-            # if self.conv_convert_list is not None:
-            #     converted_feat = self.conv_convert_list[0](x_2)
-            #     out_featList.append(converted_feat)
-            # else:
-            out_featList.append(x_2)
+        # if len(self.dimList) == 5:
+        #     # if self.conv_convert_list is not None:
+        #     #     converted_feat = self.conv_convert_list[0](x_2)
+        #     #     out_featList.append(converted_feat)
+        #     # else:
+        #     out_featList.append(x_2)
             
         x_4 = self.stage1(x_2) # /4
         # if self.conv_convert_list is not None:

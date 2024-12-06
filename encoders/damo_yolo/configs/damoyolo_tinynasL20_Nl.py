@@ -41,7 +41,7 @@ class Config(MyConfig):
 
         # backbone
         structure = self.read_structure(
-            'networks/encoders/damo_yolo/base_models/backbones/nas_backbones/tinynas_nano_large.txt')
+            'encoders/damo_yolo/base_models/backbones/nas_backbones/tinynas_nano_large.txt')
         TinyNAS = {
             'name': 'TinyNAS_mob',
             'net_structure_str': structure,

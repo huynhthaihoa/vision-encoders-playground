@@ -583,7 +583,6 @@ class RTDetTR(BaseEncoder):
                             
     def forward(self, x):
         output = self.backbone(x)
-        
         output = output[1:]
         if self.encoder is not None:
             output_2 = self.encoder(output)

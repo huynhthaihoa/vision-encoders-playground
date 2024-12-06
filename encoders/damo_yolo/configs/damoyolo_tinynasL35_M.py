@@ -33,7 +33,7 @@ class Config(MyConfig):
 
         # backbone
         structure = self.read_structure(
-            'networks/encoders/damo_yolo/base_models/backbones/nas_backbones/tinynas_L35_kxkx.txt')
+            'encoders/damo_yolo/base_models/backbones/nas_backbones/tinynas_L35_kxkx.txt')
         TinyNAS = {
             'name': 'TinyNAS_csp',
             'net_structure_str': structure,
