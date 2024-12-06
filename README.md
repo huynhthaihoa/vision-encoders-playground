@@ -11,7 +11,7 @@ This repository aims to summarize **pretrained encoders (backbones)** derived fr
 - :x: means the encoder is incompatible with TI
 - :heavy_check_mark: means the encoder is compatible with TI
 - :grey_question: means the TI compatibility has not been checked 
-- MACs values were calculated with input size (224, 224)
+- GMACs values were calculated with input size `(224, 224)`
 
 ### Classification-based
 |Reference|Pretrained Dataset|Source|Encoder name|Param Num|GMACs|License|TI compatibility|
@@ -75,7 +75,7 @@ This repository aims to summarize **pretrained encoders (backbones)** derived fr
 |[apple ml-mobileone](https://github.com/apple/ml-mobileone)|ImageNet|[mobileone_encoder.py](encoders/mobileone_encoder.py)|mobileone_s2|5,835,648|1.67|Apple|:x:|
 |[apple ml-mobileone](https://github.com/apple/ml-mobileone)|ImageNet|[mobileone_encoder.py](encoders/mobileone_encoder.py)|mobileone_s3|8,121,600|2.34|Apple|:x:|
 |[apple ml-mobileone](https://github.com/apple/ml-mobileone)|ImageNet|[mobileone_encoder.py](encoders/mobileone_encoder.py)|mobileone_s4|12,902,248|3.56|Apple|:x:|
-|[timm encoder*](https://huggingface.co/docs/timm/feature_extraction)|ImageNet|[timm_encoder.py](encoders/timm_encoder.py)|-|Apache-2.0|:grey_question:|
+|[timm encoder*](https://huggingface.co/docs/timm/feature_extraction)|ImageNet|[timm_encoder.py](encoders/timm_encoder.py)|-|-|-|Apache-2.0|:grey_question:|
 |[facebook ConvNeXt](https://github.com/facebookresearch/ConvNeXt)|ImageNet|[convnext_encoder.py](encoders/convnext_encoder.py)|convnext_tiny|27,818,592|4.49|MIT|:x:|
 |[facebook ConvNeXt](https://github.com/facebookresearch/ConvNeXt)|ImageNet|[convnext_encoder.py](encoders/convnext_encoder.py)|convnext_small|49,453,152|8.73|MIT|:x:|
 |[facebook ConvNeXt](https://github.com/facebookresearch/ConvNeXt)|ImageNet|[convnext_encoder.py](encoders/convnext_encoder.py)|convnext_base|87,564,416|15.42|MIT|:x:|
