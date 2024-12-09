@@ -190,7 +190,7 @@ This repository aims to summarize **pretrained encoders (backbones)** derived fr
 |[RT-DETR PResNet backbone + HybridEncoder](https://github.com/lyuwenyu/RT-DETR)|COCO + Object365|[rtdetr_encoder.py](encoders/rtdetr_encoder.py)|cocoobject365_rtdetr_r50vd|35,424,864|-|Apache-2.0|:grey_question:|
 |[RT-DETR PResNet backbone + HybridEncoder](https://github.com/lyuwenyu/RT-DETR)|COCO + Object365|[rtdetr_encoder.py](encoders/rtdetr_encoder.py)|cocoobject365_rtdetr_r101vd|68,204,000|-|Apache-2.0|:grey_question:|
 |[DAMO-YOLO](https://github.com/tinyvision/DAMO-YOLO)|COCO|[damoyolo_encoder.py](encoders/damoyolo_encoder.py)|damoyolons|1,373,992|0.224|Apache-2.0|:grey_question:|
-|[DAMO-YOLO](hhttps://github.com/tinyvision/DAMO-YOLO)|COCO|[damoyolo_encoder.py](encoders/damoyolo_encoder.py)|damoyolonm|2,656,704|0.533|Apache-2.0|:grey_question:|
+|[DAMO-YOLO](https://github.com/tinyvision/DAMO-YOLO)|COCO|[damoyolo_encoder.py](encoders/damoyolo_encoder.py)|damoyolonm|2,656,704|0.533|Apache-2.0|:grey_question:|
 |[DAMO-YOLO](https://github.com/tinyvision/DAMO-YOLO)|COCO|[damoyolo_encoder.py](encoders/damoyolo_encoder.py)|damoyolonl|5,625,520|0.872|Apache-2.0|:grey_question:|
 |[DAMO-YOLO](https://github.com/tinyvision/DAMO-YOLO)|COCO|[damoyolo_encoder.py](encoders/damoyolo_encoder.py)|damoyolot|8,278,544|1.06|Apache-2.0|:grey_question:|
 |[DAMO-YOLO](https://github.com/tinyvision/DAMO-YOLO)|COCO|[damoyolo_encoder.py](encoders/damoyolo_encoder.py)|damoyolos|15,741,728|2.21|Apache-2.0|:grey_question:|
