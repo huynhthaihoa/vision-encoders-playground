@@ -175,6 +175,18 @@ This repository aims to summarize **pretrained encoders (backbones)** derived fr
 |[D-FINE HGNetv2 backbone](https://github.com/Peterande/D-FINE)|COCO + Object365|[hgnetv2_encoder.py](encoders/hgnetv2_encoder.py)|cocoobject365_hgnetv2_b2|6,026,544|1.15|Apache-2.0|:grey_question:|
 |[D-FINE HGNetv2 backbone](https://github.com/Peterande/D-FINE)|COCO + Object365|[hgnetv2_encoder.py](encoders/hgnetv2_encoder.py)|cocoobject365_hgnetv2_b4|13,507,680|2.74|Apache-2.0|:grey_question:|
 |[D-FINE HGNetv2 backbone](https://github.com/Peterande/D-FINE)|COCO + Object365|[hgnetv2_encoder.py](encoders/hgnetv2_encoder.py)|cocoobject365_hgnetv2_b5|33,231,840|6.55|Apache-2.0|:grey_question:|
+|[D-FINE HGNetv2 backbone + HybridEncoder encoder](https://github.com/Peterande/D-FINE)|COCO|[hgnetv2_encoder.py](encoders/hgnetv2_encoder.py)|coco_dfine_s|10,734,816|-|Apache-2.0|:grey_question:|
+|[D-FINE HGNetv2 backbone + HybridEncoder encoder](https://github.com/Peterande/D-FINE)|COCO|[hgnetv2_encoder.py](encoders/hgnetv2_encoder.py)|coco_dfine_m|13,825,584|-|Apache-2.0|:grey_question:|
+|[D-FINE HGNetv2 backbone + HybridEncoder encoder](https://github.com/Peterande/D-FINE)|COCO|[hgnetv2_encoder.py](encoders/hgnetv2_encoder.py)|coco_dfine_l|22,850,912|-|Apache-2.0|:grey_question:|
+|[D-FINE HGNetv2 backbone + HybridEncoder encoder](https://github.com/Peterande/D-FINE)|COCO|[hgnetv2_encoder.py](encoders/hgnetv2_encoder.py)|coco_dfine_x|53,931,872|-|Apache-2.0|:grey_question:|
+|[D-FINE HGNetv2 backbone + HybridEncoder encoder](https://github.com/Peterande/D-FINE)|Object365|[hgnetv2_encoder.py](encoders/hgnetv2_encoder.py)|object365_dfine_s|10,734,816|-|Apache-2.0|:grey_question:|
+|[D-FINE HGNetv2 backbone + HybridEncoder encoder](https://github.com/Peterande/D-FINE)|Object365|[hgnetv2_encoder.py](encoders/hgnetv2_encoder.py)|object365_dfine_m|13,825,584|-|Apache-2.0|:grey_question:|
+|[D-FINE HGNetv2 backbone + HybridEncoder encoder](https://github.com/Peterande/D-FINE)|Object365|[hgnetv2_encoder.py](encoders/hgnetv2_encoder.py)|object365_dfine_l|22,850,912|-|Apache-2.0|:grey_question:|
+|[D-FINE HGNetv2 backbone + HybridEncoder encoder](https://github.com/Peterande/D-FINE)|Object365|[hgnetv2_encoder.py](encoders/hgnetv2_encoder.py)|object365_dfine_x|53,931,872|-|Apache-2.0|:grey_question:|
+|[D-FINE HGNetv2 backbone + HybridEncoder encoder](https://github.com/Peterande/D-FINE)|COCO + Object365|[hgnetv2_encoder.py](encoders/hgnetv2_encoder.py)|cocoobject365_dfine_s|10,734,816|-|Apache-2.0|:grey_question:|
+|[D-FINE HGNetv2 backbone + HybridEncoder encoder](https://github.com/Peterande/D-FINE)|COCO + Object365|[hgnetv2_encoder.py](encoders/hgnetv2_encoder.py)|cocoobject365_dfine_m|13,825,584|-|Apache-2.0|:grey_question:|
+|[D-FINE HGNetv2 backbone + HybridEncoder encoder](https://github.com/Peterande/D-FINE)|COCO + Object365|[hgnetv2_encoder.py](encoders/hgnetv2_encoder.py)|cocoobject365_dfine_l|22,850,912|-|Apache-2.0|:grey_question:|
+|[D-FINE HGNetv2 backbone + HybridEncoder encoder](https://github.com/Peterande/D-FINE)|COCO + Object365|[hgnetv2_encoder.py](encoders/hgnetv2_encoder.py)|cocoobject365_dfine_x|53,931,872|-|Apache-2.0|:grey_question:|
 |[RT-DETR PResNet backbone](https://github.com/lyuwenyu/RT-DETR)|COCO|[rtdetr_encoder.py](encoders/rtdetr_encoder.py)|rtdetr_r18vd_truncate|11,190,112|2.07|Apache-2.0|:grey_question:|
 |[RT-DETR PResNet backbone](https://github.com/lyuwenyu/RT-DETR)|COCO|[rtdetr_encoder.py](encoders/rtdetr_encoder.py)|rtdetr_r34vd_truncate|21,290,848|3.93|Apache-2.0|:grey_question:|
 |[RT-DETR PResNet backbone](https://github.com/lyuwenyu/RT-DETR)|COCO|[rtdetr_encoder.py](encoders/rtdetr_encoder.py)|rtdetr_r50vd_truncate|23,474,016|4.35|Apache-2.0|:grey_question:|

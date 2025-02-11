@@ -515,7 +515,6 @@ class HGNetv2(BaseEncoder):
     def __init__(self,
                  architecture='hgnetv2B0',
                  pretrained=False,
-                 out_dimList = [],
                  finetune=False,
                  use_lab=False,
                  return_idx=[0, 1, 2, 3],
