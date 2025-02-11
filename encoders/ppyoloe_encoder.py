@@ -705,7 +705,7 @@ class PPYOLOE(BaseEncoder):
         else:
             act = 'swish'
             
-        if architecture.find('noattn') is True:
+        if architecture.find('noattn') != -1:
             attn = False
         else:
             attn = True
