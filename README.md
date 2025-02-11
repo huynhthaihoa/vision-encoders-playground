@@ -1,6 +1,6 @@
 # vision-encoders-playground
 
-This repository aims to summarize **pretrained encoders (backbones)** derived from different **detection/classification models**. These encoders can be used for different downstream tasks such as classification, object detection, body keypoint estimation, semantic segmentation, depth estimation, etc.
+This repository aims to summarize **pretrained encoders (backbones)** derived from different **detection/classification models**. These encoders can be used for several downstream vision tasks such as classification, object detection, body keypoint estimation, semantic segmentation, depth estimation, etc.
 
 ## Requirements
 *to be updated*
@@ -147,6 +147,8 @@ This repository aims to summarize **pretrained encoders (backbones)** derived fr
 |[ultralytics YOLOv8](https://github.com/ultralytics/ultralytics)|COCO|[ultralytics_encoder.py](encoders/ultralytics_encoder.py)|ultralytics_yolov8m|22,080,624|3.87|AGPL-3.0|:x:|
 |[ultralytics YOLOv8](https://github.com/ultralytics/ultralytics)|COCO|[ultralytics_encoder.py](encoders/ultralytics_encoder.py)|ultralytics_yolov8l|38,047,040|8.53|AGPL-3.0|:x:|
 |[ultralytics YOLOv8](https://github.com/ultralytics/ultralytics)|COCO|[ultralytics_encoder.py](encoders/ultralytics_encoder.py)|ultralytics_yolov8x|59,434,640|13.32|AGPL-3.0|:x:|
+|[WongKinYiu YOLOv9](https://github.com/WongKinYiu/yolov9)|COCO|[yolov9_encoder.py](encoders/yolov9_encoder.py)|yolov9-t|1,709,232|0.397|GPL-3.0|:grey_question:|
+|[WongKinYiu YOLOv9](https://github.com/WongKinYiu/yolov9)|COCO|[yolov9_encoder.py](encoders/yolov9_encoder.py)|yolov9-s|6,800,736|1.57|GPL-3.0|:grey_question:|
 |[WongKinYiu YOLOv9](https://github.com/WongKinYiu/yolov9)|COCO|[yolov9_encoder.py](encoders/yolov9_encoder.py)|yolov9-c|29,456,768|7.55|GPL-3.0|:grey_question:|
 |[WongKinYiu YOLOv9](https://github.com/WongKinYiu/yolov9)|COCO|[yolov9_encoder.py](encoders/yolov9_encoder.py)|yolov9-e|58,425,024|11.86|GPL-3.0|:grey_question:|
 |[WongKinYiu YOLOv9](https://github.com/WongKinYiu/yolov9)|COCO|[yolov9_encoder.py](encoders/yolov9_encoder.py)|gelan-c|19,946,432|4.75|GPL-3.0|:grey_question:|

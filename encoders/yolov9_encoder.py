@@ -29,6 +29,12 @@ class YOLOv9(BaseEncoder):
             cfg = 'encoders/yolov9/config/yolov9-c.yaml'
         elif architecture == 'yolov9-e':
             cfg = 'encoders/yolov9/config/yolov9-e.yaml'
+        elif architecture == 'yolov9-t':
+            cfg = 'encoders/yolov9/config/yolov9-t.yaml'
+            self.reverse = True
+        elif architecture == 'yolov9-s':
+            cfg = 'encoders/yolov9/config/yolov9-s.yaml'
+            self.reverse = True
         elif architecture == 'gelan-c':
             cfg = 'encoders/yolov9/config/gelan-c.yaml'
         elif architecture == 'gelan-e':
@@ -65,6 +71,9 @@ class YOLOv9(BaseEncoder):
         # print(self.anchors)
         
         self.dimList = feats[-self.anchors:]
+
+        if self.reverse:
+            self.dimList = self.dimList[::-1]
         
         # self.make_conv_convert_list(out_dimList)  
         
@@ -106,6 +115,9 @@ class YOLOv9(BaseEncoder):
         for feat in y:
             if feat is not None:
                 feats.append(feat)
+
+        if self.reverse:
+            feats = feats[::-1]
         
         feats = feats[-self.anchors:]
         # if self.conv_convert_list is not None:
@@ -144,11 +156,11 @@ def parse_model(d, ch):  # model_dict, input_channels(3)
             with contextlib.suppress(NameError):
                 args[j] = eval(a) if isinstance(a, str) else a  # eval strings
 
-        n = n_ = max(round(n * gd), 1) if n > 1 else n  # depth gain
+        n = max(round(n * gd), 1) if n > 1 else n  # depth gain
         if m in {
             Conv, AConv, ConvTranspose, 
             Bottleneck, SPP, SPPF, DWConv, BottleneckCSP, nn.ConvTranspose2d, DWConvTranspose2d, SPPCSPC, ADown,
-            RepNCSPELAN4, SPPELAN}:
+            ELAN1, RepNCSPELAN4, SPPELAN}:
             if m is RepNCSPELAN4:
                 feats.append(args[0])
             c1, c2 = ch[f], args[0]
