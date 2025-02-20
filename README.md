@@ -186,6 +186,11 @@ This repository aims to summarize **pretrained encoders (backbones)** derived fr
 |[Jahongir YOLOv11-pt](https://github.com/jahongir7174/YOLOv11-pt)|COCO|[yolov11_encoder.py](encoders/yolov11_encoder.py)|yolov11m|18,641,984|3.78|AGPL-3.0|:grey_question:|
 |[Jahongir YOLOv11-pt](https://github.com/jahongir7174/YOLOv11-pt)|COCO|[yolov11_encoder.py](encoders/yolov11_encoder.py)|yolov11l|23,899,456|4.94|AGPL-3.0|:grey_question:|
 |[Jahongir YOLOv11-pt](https://github.com/jahongir7174/YOLOv11-pt)|COCO|[yolov11_encoder.py](encoders/yolov11_encoder.py)|yolov11x|53,728,224|11.09|AGPL-3.0|:grey_question:|
+|[sunsmarterjie YOLOv12](https://github.com/sunsmarterjie/yolov12/tree/main)|COCO|[yolov11_encoder.py](encoders/yolov12_encoder.py)|yolov12n|2,137,376|0.289|AGPL-3.0|:grey_question:|
+|[sunsmarterjie YOLOv12](https://github.com/sunsmarterjie/yolov12/tree/main)|COCO|[yolov12_encoder.py](encoders/yolov12_encoder.py)|yolov12s|8,433,728|1.12|AGPL-3.0|:grey_question:|
+|[sunsmarterjie YOLOv12](https://github.com/sunsmarterjie/yolov12/tree/main)|COCO|[yolov12_encoder.py](encoders/yolov12_encoder.py)|yolov12m|18,726,464|3.75|AGPL-3.0|:grey_question:|
+|[sunsmarterjie YOLOv12](https://github.com/sunsmarterjie/yolov12/tree/main)|COCO|[yolov12_encoder.py](encoders/yolov12_encoder.py)|yolov12l|24,978,080|5.07|AGPL-3.0|:grey_question:|
+|[sunsmarterjie YOLOv12](https://github.com/sunsmarterjie/yolov12/tree/main)|COCO|[yolov12_encoder.py](encoders/yolov12_encoder.py)|yolov12x|55,972,832|11.35|AGPL-3.0|:grey_question:|
 |[D-FINE HGNetv2 backbone](https://github.com/Peterande/D-FINE)|COCO|[hgnetv2_encoder.py](encoders/hgnetv2_encoder.py)|coco_hgnetv2_b0|1,850,336|0.326|Apache-2.0|:grey_question:|
 |[D-FINE HGNetv2 backbone](https://github.com/Peterande/D-FINE)|COCO|[hgnetv2_encoder.py](encoders/hgnetv2_encoder.py)|coco_hgnetv2_b2|6,026,544|1.15|Apache-2.0|:grey_question:|
 |[D-FINE HGNetv2 backbone](https://github.com/Peterande/D-FINE)|COCO|[hgnetv2_encoder.py](encoders/hgnetv2_encoder.py)|coco_hgnetv2_b4|13,507,680|2.74|Apache-2.0|:grey_question:|

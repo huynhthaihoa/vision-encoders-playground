@@ -49,7 +49,9 @@ from .block import (
     PSA,
     C2fCIB,
     SCDown,
-    RepVGGDW
+    RepVGGDW,
+    C3k2,
+    A2C2f,
 )
 from .conv import (
     CBAM,

@@ -53,7 +53,9 @@ from ..nn.modules import (
     PSA,
     SCDown,
     RepVGGDW,
-    v10Detect
+    v10Detect,
+    A2C2f,
+    C3k2
 )
 from ..utils import DEFAULT_CFG_DICT, DEFAULT_CFG_KEYS, LOGGER, colorstr, emojis, yaml_load
 from ..utils.checks import check_requirements, check_suffix, check_yaml
@@ -946,7 +948,9 @@ def parse_model(d, ch):#, verbose=True):  # model_dict, input_channels(3)
             RepC3,
             PSA,
             SCDown,
-            C2fCIB
+            C2fCIB,
+            C3k2,
+            A2C2f
         }:
             if m in [C2f, C2fAttn, C2fCIB]:
                 feats.append(args[0])
@@ -960,9 +964,18 @@ def parse_model(d, ch):#, verbose=True):  # model_dict, input_channels(3)
                 )  # num heads
 
             args = [c1, c2, *args[1:]]
-            if m in (BottleneckCSP, C1, C2, C2f, C2fAttn, C3, C3TR, C3Ghost, C3x, RepC3, C2fCIB):
+            if m in (BottleneckCSP, C1, C2, C2f, C2fAttn, C3, C3TR, C3Ghost, C3x, RepC3, C2fCIB, A2C2f, C3k2):
                 args.insert(2, n)  # number of repeats
                 n = 1
+            if m is C3k2:  # for M/L/X sizes
+                # legacy = False
+                if scale in "mlx":
+                    args[3] = True
+            if m is A2C2f: 
+                # legacy = False
+                if scale in "lx":  # for L/X sizes
+                    args.append(True)
+                    args.append(1.2)
         elif m is AIFI:
             args = [ch[f], *args]
         elif m in {HGStem, HGBlock}:

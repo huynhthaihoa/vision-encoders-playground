@@ -82,6 +82,9 @@ class ProxyEncoder(nn.Module):
         elif encoder_name.find('yolov11') != -1:
             from encoders.yolov11_encoder import YOLOv11
             self.wrapper = YOLOv11(encoder_name, pretrained=self.pretrained, finetune=finetune)#keepnum_maxpool=keepnum_maxpool, use_customsilu=use_customsilu, replace_silu=replace_silu)
+        elif encoder_name.find('yolov12') != -1:
+            from encoders.yolov12_encoder import YOLOv12
+            self.wrapper = YOLOv12(encoder_name, pretrained=self.pretrained, finetune=finetune)#keepnum_maxpool=keepnum_maxpool, use_customsilu=use_customsilu, replace_silu=replace_silu)
         elif encoder_name.find('ppyoloe') != -1:#is True:
             from encoders.ppyoloe_encoder import PPYOLOE
             self.wrapper = PPYOLOE(encoder_name, pretrained=pretrained, finetune=finetune)#use_customsilu=use_customsilu, replace_silu=replace_silu)
