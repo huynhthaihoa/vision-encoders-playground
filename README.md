@@ -110,13 +110,13 @@ This repository aims to summarize **pretrained encoders (backbones)** derived fr
 |[Megviii YOLOX](https://github.com/Megvii-BaseDetection/YOLOX)|COCO|[yolox_encoder.py](encoders/yolox_encoder.py)|yoloxm|21,032,160|3.09|Apache-2.0|:x:|
 |[Megviii YOLOX](https://github.com/Megvii-BaseDetection/YOLOX)|COCO|[yolox_encoder.py](encoders/yolox_encoder.py)|yoloxl|46,599,040|7.0|Apache-2.0|:x:|
 |[Megviii YOLOX](https://github.com/Megvii-BaseDetection/YOLOX)|COCO|[yolox_encoder.py](encoders/yolox_encoder.py)|yoloxx|87,204,000|13.32|Apache-2.0|:x:|
-|[DAMO-YOLO](https://github.com/tinyvision/DAMO-YOLO)|COCO|[damoyolo_encoder.py](encoders/damoyolo_encoder.py)|damoyolons|1,373,992|0.224|Apache-2.0|:grey_question:|
-|[DAMO-YOLO](https://github.com/tinyvision/DAMO-YOLO)|COCO|[damoyolo_encoder.py](encoders/damoyolo_encoder.py)|damoyolonm|2,656,704|0.533|Apache-2.0|:grey_question:|
-|[DAMO-YOLO](https://github.com/tinyvision/DAMO-YOLO)|COCO|[damoyolo_encoder.py](encoders/damoyolo_encoder.py)|damoyolonl|5,625,520|0.872|Apache-2.0|:grey_question:|
-|[DAMO-YOLO](https://github.com/tinyvision/DAMO-YOLO)|COCO|[damoyolo_encoder.py](encoders/damoyolo_encoder.py)|damoyolot|8,278,544|1.06|Apache-2.0|:grey_question:|
-|[DAMO-YOLO](https://github.com/tinyvision/DAMO-YOLO)|COCO|[damoyolo_encoder.py](encoders/damoyolo_encoder.py)|damoyolos|15,741,728|2.21|Apache-2.0|:grey_question:|
-|[DAMO-YOLO](https://github.com/tinyvision/DAMO-YOLO)|COCO|[damoyolo_encoder.py](encoders/damoyolo_encoder.py)|damoyolom|28,047,808|3.71|Apache-2.0|:grey_question:|
-|[DAMO-YOLO](https://github.com/tinyvision/DAMO-YOLO)|COCO|[damoyolo_encoder.py](encoders/damoyolo_encoder.py)|damoyolol|42,667,840|6.0|Apache-2.0|:grey_question:|
+|[DAMO-YOLO](https://github.com/tinyvision/DAMO-YOLO)|COCO|[damoyolo_encoder.py](encoders/damoyolo_encoder.py)|damoyolo_ns|1,373,992|0.224|Apache-2.0|:grey_question:|
+|[DAMO-YOLO](https://github.com/tinyvision/DAMO-YOLO)|COCO|[damoyolo_encoder.py](encoders/damoyolo_encoder.py)|damoyolo_nm|2,656,704|0.533|Apache-2.0|:grey_question:|
+|[DAMO-YOLO](https://github.com/tinyvision/DAMO-YOLO)|COCO|[damoyolo_encoder.py](encoders/damoyolo_encoder.py)|damoyolo_nl|5,625,520|0.872|Apache-2.0|:grey_question:|
+|[DAMO-YOLO](https://github.com/tinyvision/DAMO-YOLO)|COCO|[damoyolo_encoder.py](encoders/damoyolo_encoder.py)|damoyolo_t|8,278,544|1.06|Apache-2.0|:grey_question:|
+|[DAMO-YOLO](https://github.com/tinyvision/DAMO-YOLO)|COCO|[damoyolo_encoder.py](encoders/damoyolo_encoder.py)|damoyolo_s|15,741,728|2.21|Apache-2.0|:grey_question:|
+|[DAMO-YOLO](https://github.com/tinyvision/DAMO-YOLO)|COCO|[damoyolo_encoder.py](encoders/damoyolo_encoder.py)|damoyolo_m|28,047,808|3.71|Apache-2.0|:grey_question:|
+|[DAMO-YOLO](https://github.com/tinyvision/DAMO-YOLO)|COCO|[damoyolo_encoder.py](encoders/damoyolo_encoder.py)|damoyolo_l|42,667,840|6.0|Apache-2.0|:grey_question:|
 |[PPYOLOE backbone + neck](https://github.com/Nioolek/PPYOLOE_pytorch)|COCO|[ppyoloe_encoder.py](encoders/ppyoloe_encoder.py)|ppyoloe_s|6,410,864|0.89|Apache-2.0|:x:|
 |[PPYOLOE backbone + neck](https://github.com/Nioolek/PPYOLOE_pytorch)|COCO|[ppyoloe_encoder.py](encoders/ppyoloe_encoder.py)|ppyoloe_m|21,043,920|2.85|Apache-2.0|:x:|
 |[PPYOLOE backbone + neck](https://github.com/Nioolek/PPYOLOE_pytorch)|COCO|[ppyoloe_encoder.py](encoders/ppyoloe_encoder.py)|ppyoloe_l|49,183,264|6.58|Apache-2.0|:x:|
