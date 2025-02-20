@@ -100,16 +100,39 @@ This repository aims to summarize **pretrained encoders (backbones)** derived fr
 ### Detection-based
 |Reference|Pretrained Dataset|Source|Encoder|Param Num|GMACs|License|TI compatibility|
 |------|------:|------:|------:|------:|------:|------:|------------:|
-|[edgeai-yolox](https://github.com/TexasInstruments/edgeai-yolox)|COCO|[yolox_encoder.py](encoders/yolox_encoder.py)|tiyoloxn|1,767,868|0.269|Apache-2.0|:x:|
-|[edgeai-yolox](https://github.com/TexasInstruments/edgeai-yolox)|COCO|[yolox_encoder.py](encoders/yolox_encoder.py)|tiyoloxt|3,968,748|0.578|Apache-2.0|:x:|
-|[edgeai-yolox](https://github.com/TexasInstruments/edgeai-yolox)|COCO|[yolox_encoder.py](encoders/yolox_encoder.py)|tiyoloxs|7,047,708|1.01|Apache-2.0|:x:|
-|[edgeai-yolox](https://github.com/TexasInstruments/edgeai-yolox)|COCO|[yolox_encoder.py](encoders/yolox_encoder.py)|tiyoloxm|21,032,508|3.09|Apache-2.0|:x:|
+|[edgeai-yolox](https://github.com/TexasInstruments/edgeai-yolox)|COCO|[yolox_encoder.py](encoders/yolox_encoder.py)|tiyoloxn|1,767,868|0.269|Apache-2.0|:heavy_check_mark:|
+|[edgeai-yolox](https://github.com/TexasInstruments/edgeai-yolox)|COCO|[yolox_encoder.py](encoders/yolox_encoder.py)|tiyoloxt|3,968,748|0.578|Apache-2.0|:heavy_check_mark:|
+|[edgeai-yolox](https://github.com/TexasInstruments/edgeai-yolox)|COCO|[yolox_encoder.py](encoders/yolox_encoder.py)|tiyoloxs|7,047,708|1.01|Apache-2.0|:heavy_check_mark:|
+|[edgeai-yolox](https://github.com/TexasInstruments/edgeai-yolox)|COCO|[yolox_encoder.py](encoders/yolox_encoder.py)|tiyoloxm|21,032,508|3.09|Apache-2.0|:heavy_check_mark:|
 |[Megviii YOLOX](https://github.com/Megvii-BaseDetection/YOLOX)|COCO|[yolox_encoder.py](encoders/yolox_encoder.py)|yoloxn|1,767,520|0.264|Apache-2.0|:x:|
 |[Megviii YOLOX](https://github.com/Megvii-BaseDetection/YOLOX)|COCO|[yolox_encoder.py](encoders/yolox_encoder.py)|yoloxt|3,968,400|0.574|Apache-2.0|:x:|
 |[Megviii YOLOX](https://github.com/Megvii-BaseDetection/YOLOX)|COCO|[yolox_encoder.py](encoders/yolox_encoder.py)|yoloxs|7,047,360|1.0|Apache-2.0|:x:|
 |[Megviii YOLOX](https://github.com/Megvii-BaseDetection/YOLOX)|COCO|[yolox_encoder.py](encoders/yolox_encoder.py)|yoloxm|21,032,160|3.09|Apache-2.0|:x:|
 |[Megviii YOLOX](https://github.com/Megvii-BaseDetection/YOLOX)|COCO|[yolox_encoder.py](encoders/yolox_encoder.py)|yoloxl|46,599,040|7.0|Apache-2.0|:x:|
 |[Megviii YOLOX](https://github.com/Megvii-BaseDetection/YOLOX)|COCO|[yolox_encoder.py](encoders/yolox_encoder.py)|yoloxx|87,204,000|13.32|Apache-2.0|:x:|
+|[DAMO-YOLO](https://github.com/tinyvision/DAMO-YOLO)|COCO|[damoyolo_encoder.py](encoders/damoyolo_encoder.py)|damoyolons|1,373,992|0.224|Apache-2.0|:grey_question:|
+|[DAMO-YOLO](https://github.com/tinyvision/DAMO-YOLO)|COCO|[damoyolo_encoder.py](encoders/damoyolo_encoder.py)|damoyolonm|2,656,704|0.533|Apache-2.0|:grey_question:|
+|[DAMO-YOLO](https://github.com/tinyvision/DAMO-YOLO)|COCO|[damoyolo_encoder.py](encoders/damoyolo_encoder.py)|damoyolonl|5,625,520|0.872|Apache-2.0|:grey_question:|
+|[DAMO-YOLO](https://github.com/tinyvision/DAMO-YOLO)|COCO|[damoyolo_encoder.py](encoders/damoyolo_encoder.py)|damoyolot|8,278,544|1.06|Apache-2.0|:grey_question:|
+|[DAMO-YOLO](https://github.com/tinyvision/DAMO-YOLO)|COCO|[damoyolo_encoder.py](encoders/damoyolo_encoder.py)|damoyolos|15,741,728|2.21|Apache-2.0|:grey_question:|
+|[DAMO-YOLO](https://github.com/tinyvision/DAMO-YOLO)|COCO|[damoyolo_encoder.py](encoders/damoyolo_encoder.py)|damoyolom|28,047,808|3.71|Apache-2.0|:grey_question:|
+|[DAMO-YOLO](https://github.com/tinyvision/DAMO-YOLO)|COCO|[damoyolo_encoder.py](encoders/damoyolo_encoder.py)|damoyolol|42,667,840|6.0|Apache-2.0|:grey_question:|
+|[PPYOLOE backbone + neck](https://github.com/Nioolek/PPYOLOE_pytorch)|COCO|[ppyoloe_encoder.py](encoders/ppyoloe_encoder.py)|ppyoloe_s|6,410,864|0.89|Apache-2.0|:x:|
+|[PPYOLOE backbone + neck](https://github.com/Nioolek/PPYOLOE_pytorch)|COCO|[ppyoloe_encoder.py](encoders/ppyoloe_encoder.py)|ppyoloe_m|21,043,920|2.85|Apache-2.0|:x:|
+|[PPYOLOE backbone + neck](https://github.com/Nioolek/PPYOLOE_pytorch)|COCO|[ppyoloe_encoder.py](encoders/ppyoloe_encoder.py)|ppyoloe_l|49,183,264|6.58|Apache-2.0|:x:|
+|[PPYOLOE backbone + neck](https://github.com/Nioolek/PPYOLOE_pytorch)|COCO|[ppyoloe_encoder.py](encoders/ppyoloe_encoder.py)|ppyoloe_x|95,244,800|12.64|Apache-2.0|:x:|
+|[PPYOLOE backbone + neck (removed Squeeze-Excitation block)](https://github.com/Nioolek/PPYOLOE_pytorch)|COCO|[ppyoloe_encoder.py](encoders/ppyoloe_encoder.py)|ppyoloe_s_noattn|6,214,304|0.87|Apache-2.0|:heavy_check_mark:|
+|[PPYOLOE backbone + neck (removed Squeeze-Excitation block)](https://github.com/Nioolek/PPYOLOE_pytorch)|COCO|[ppyoloe_encoder.py](encoders/ppyoloe_encoder.py)|ppyoloe_m_noattn|20,602,200|2.79|Apache-2.0|:heavy_check_mark:|
+|[PPYOLOE backbone + neck (removed Squeeze-Excitation block)](https://github.com/Nioolek/PPYOLOE_pytorch)|COCO|[ppyoloe_encoder.py](encoders/ppyoloe_encoder.py)|ppyoloe_l_noattn|48,398,464|6.46|Apache-2.0|:grey_question:|
+|[PPYOLOE backbone + neck (removed Squeeze-Excitation block)](https://github.com/Nioolek/PPYOLOE_pytorch)|COCO|[ppyoloe_encoder.py](encoders/ppyoloe_encoder.py)|ppyoloe_x_noattn|94,019,000|12.45|Apache-2.0|:grey_question:|
+|[PPYOLOE backbone](https://github.com/Nioolek/PPYOLOE_pytorch)|COCO|[ppyoloe_encoder.py](encoders/ppyoloe_encoder.py)|ppyoloe_s_truncate|2,992,976|0.57|Apache-2.0|:x:|
+|[PPYOLOE backbone](https://github.com/Nioolek/PPYOLOE_pytorch)|COCO|[ppyoloe_encoder.py](encoders/ppyoloe_encoder.py)|ppyoloe_m_truncate|9,317,424|1.75|Apache-2.0|:x:|
+|[PPYOLOE backbone](https://github.com/Nioolek/PPYOLOE_pytorch)|COCO|[ppyoloe_encoder.py](encoders/ppyoloe_encoder.py)|ppyoloe_l_truncate|21,158,752|3.92|Apache-2.0|:x:|
+|[PPYOLOE backbone](https://github.com/Nioolek/PPYOLOE_pytorch)|COCO|[ppyoloe_encoder.py](encoders/ppyoloe_encoder.py)|ppyoloe_x_truncate|40,240,640|7.41|Apache-2.0|:x:|
+|[PPYOLOE backbone (removed Squeeze-Excitation block)](https://github.com/Nioolek/PPYOLOE_pytorch)|COCO|[ppyoloe_encoder.py](encoders/ppyoloe_encoder.py)|ppyoloe_s_noattn_truncate|2,796,416|0.54|Apache-2.0|:heavy_check_mark:|
+|[PPYOLOE backbone (removed Squeeze-Excitation block)](https://github.com/Nioolek/PPYOLOE_pytorch)|COCO|[ppyoloe_encoder.py](encoders/ppyoloe_encoder.py)|ppyoloe_m_noattn_truncate|8,875,704|1.68|Apache-2.0|:heavy_check_mark:|
+|[PPYOLOE backbone (removed Squeeze-Excitation block)](https://github.com/Nioolek/PPYOLOE_pytorch)|COCO|[ppyoloe_encoder.py](encoders/ppyoloe_encoder.py)|ppyoloe_l_noattn_truncate|20,373,952|3.81|Apache-2.0|:grey_question:|
+|[PPYOLOE backbone (removed Squeeze-Excitation block)](https://github.com/Nioolek/PPYOLOE_pytorch)|COCO|[ppyoloe_encoder.py](encoders/ppyoloe_encoder.py)|ppyoloe_x_noattn_truncate|39,014,840|7.23|Apache-2.0|:grey_question:|
 |[Jahongir YOLOv5-pt](https://github.com/jahongir7174/YOLOv5-pt)|COCO|[yolov5_encoder.py](encoders/nets/yolov5_encoder.py)|yolov5n|1,757,152|0.256|AGPL-3.0|:x:|
 |[Jahongir YOLOv5-pt](https://github.com/jahongir7174/YOLOv5-pt)|COCO|[yolov5_encoder.py](encoders/nets/yolov5_encoder.py)|yolov5s|7,006,144|0.971|AGPL-3.0|:x:|
 |[Jahongir YOLOv5-pt](https://github.com/jahongir7174/YOLOv5-pt)|COCO|[yolov5_encoder.py](encoders/nets/yolov5_encoder.py)|yolov5m|20,847,072|2.94|AGPL-3.0|:x:|
@@ -137,11 +160,11 @@ This repository aims to summarize **pretrained encoders (backbones)** derived fr
 |[Jahongir YOLOv8-pt](https://github.com/jahongir7174/YOLOv8-pt)|COCO|[yolov8_encoder.py](encoders/nets/yolov8_encoder.py)|yolov8m|22,080,624|3.87|AGPL-3.0|:x:|
 |[Jahongir YOLOv8-pt](https://github.com/jahongir7174/YOLOv8-pt)|COCO|[yolov8_encoder.py](encoders/nets/yolov8_encoder.py)|yolov8l|38,047,040|8.53|AGPL-3.0|:x:|
 |[Jahongir YOLOv8-pt](https://github.com/jahongir7174/YOLOv8-pt)|COCO|[yolov8_encoder.py](encoders/nets/yolov8_encoder.py)|yolov8x|59,434,640|13.32|AGPL-3.0|:x:|
-|[Jahongir YOLOv8-pt](https://github.com/jahongir7174/YOLOv8-pt)|COCO|[yolov8_encoder.py](encoders/nets/yolov8_encoder.py)|tiyolov8n|2,259,536|0.318|AGPL-3.0|:heavy_check_mark:|
-|[Jahongir YOLOv8-pt](https://github.com/jahongir7174/YOLOv8-pt)|COCO|[yolov8_encoder.py](encoders/nets/yolov8_encoder.py)|tiyolov8s|9,019,552|1.25|AGPL-3.0|:heavy_check_mark:|
-|[Jahongir YOLOv8-pt](https://github.com/jahongir7174/YOLOv8-pt)|COCO|[yolov8_encoder.py](encoders/nets/yolov8_encoder.py)|tiyolov8m|22,080,624|3.87|AGPL-3.0|:x:|
-|[Jahongir YOLOv8-pt](https://github.com/jahongir7174/YOLOv8-pt)|COCO|[yolov8_encoder.py](encoders/nets/yolov8_encoder.py)|tiyolov8l|38,047,040|8.53|AGPL-3.0|:x:|
-|[Jahongir YOLOv8-pt](https://github.com/jahongir7174/YOLOv8-pt)|COCO|[yolov8_encoder.py](encoders/nets/yolov8_encoder.py)|tiyolov8x|59,434,640|13.32|AGPL-3.0|:x:|
+|[Custom Jahongir YOLOv8-pt for TI](https://github.com/jahongir7174/YOLOv8-pt)|COCO|[yolov8_encoder.py](encoders/nets/yolov8_encoder.py)|tiyolov8n|2,259,536|0.318|AGPL-3.0|:heavy_check_mark:|
+|[Custom Jahongir YOLOv8-pt for TI](https://github.com/jahongir7174/YOLOv8-pt)|COCO|[yolov8_encoder.py](encoders/nets/yolov8_encoder.py)|tiyolov8s|9,019,552|1.25|AGPL-3.0|:heavy_check_mark:|
+|[Custom Jahongir YOLOv8-pt for TI](https://github.com/jahongir7174/YOLOv8-pt)|COCO|[yolov8_encoder.py](encoders/nets/yolov8_encoder.py)|tiyolov8m|22,080,624|3.87|AGPL-3.0|:x:|
+|[Custom Jahongir YOLOv8-pt for TI](https://github.com/jahongir7174/YOLOv8-pt)|COCO|[yolov8_encoder.py](encoders/nets/yolov8_encoder.py)|tiyolov8l|38,047,040|8.53|AGPL-3.0|:x:|
+|[Custom Jahongir YOLOv8-pt for TI](https://github.com/jahongir7174/YOLOv8-pt)|COCO|[yolov8_encoder.py](encoders/nets/yolov8_encoder.py)|tiyolov8x|59,434,640|13.32|AGPL-3.0|:x:|
 |[ultralytics YOLOv8](https://github.com/ultralytics/ultralytics)|COCO|[ultralytics_encoder.py](encoders/ultralytics_encoder.py)|ultralytics_yolov8n|2,259,536|0.318|AGPL-3.0|:x:|
 |[ultralytics YOLOv8](https://github.com/ultralytics/ultralytics)|COCO|[ultralytics_encoder.py](encoders/ultralytics_encoder.py)|ultralytics_yolov8s|9,019,552|1.25|AGPL-3.0|:x:|
 |[ultralytics YOLOv8](https://github.com/ultralytics/ultralytics)|COCO|[ultralytics_encoder.py](encoders/ultralytics_encoder.py)|ultralytics_yolov8m|22,080,624|3.87|AGPL-3.0|:x:|
@@ -203,10 +226,3 @@ This repository aims to summarize **pretrained encoders (backbones)** derived fr
 |[RT-DETR PResNet backbone + HybridEncoder](https://github.com/lyuwenyu/RT-DETR)|COCO + Object365|[rtdetr_encoder.py](encoders/rtdetr_encoder.py)|cocoobject365_rtdetr_r34vd|26,255,968|-|Apache-2.0|:grey_question:|
 |[RT-DETR PResNet backbone + HybridEncoder](https://github.com/lyuwenyu/RT-DETR)|COCO + Object365|[rtdetr_encoder.py](encoders/rtdetr_encoder.py)|cocoobject365_rtdetr_r50vd|35,424,864|-|Apache-2.0|:grey_question:|
 |[RT-DETR PResNet backbone + HybridEncoder](https://github.com/lyuwenyu/RT-DETR)|COCO + Object365|[rtdetr_encoder.py](encoders/rtdetr_encoder.py)|cocoobject365_rtdetr_r101vd|68,204,000|-|Apache-2.0|:grey_question:|
-|[DAMO-YOLO](https://github.com/tinyvision/DAMO-YOLO)|COCO|[damoyolo_encoder.py](encoders/damoyolo_encoder.py)|damoyolons|1,373,992|0.224|Apache-2.0|:grey_question:|
-|[DAMO-YOLO](https://github.com/tinyvision/DAMO-YOLO)|COCO|[damoyolo_encoder.py](encoders/damoyolo_encoder.py)|damoyolonm|2,656,704|0.533|Apache-2.0|:grey_question:|
-|[DAMO-YOLO](https://github.com/tinyvision/DAMO-YOLO)|COCO|[damoyolo_encoder.py](encoders/damoyolo_encoder.py)|damoyolonl|5,625,520|0.872|Apache-2.0|:grey_question:|
-|[DAMO-YOLO](https://github.com/tinyvision/DAMO-YOLO)|COCO|[damoyolo_encoder.py](encoders/damoyolo_encoder.py)|damoyolot|8,278,544|1.06|Apache-2.0|:grey_question:|
-|[DAMO-YOLO](https://github.com/tinyvision/DAMO-YOLO)|COCO|[damoyolo_encoder.py](encoders/damoyolo_encoder.py)|damoyolos|15,741,728|2.21|Apache-2.0|:grey_question:|
-|[DAMO-YOLO](https://github.com/tinyvision/DAMO-YOLO)|COCO|[damoyolo_encoder.py](encoders/damoyolo_encoder.py)|damoyolom|28,047,808|3.71|Apache-2.0|:grey_question:|
-|[DAMO-YOLO](https://github.com/tinyvision/DAMO-YOLO)|COCO|[damoyolo_encoder.py](encoders/damoyolo_encoder.py)|damoyolol|42,667,840|6.0|Apache-2.0|:grey_question:|
