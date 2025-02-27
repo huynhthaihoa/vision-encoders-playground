@@ -191,6 +191,22 @@ This repository aims to summarize **pretrained encoders (backbones)** derived fr
 |[sunsmarterjie YOLOv12](https://github.com/sunsmarterjie/yolov12/tree/main)|COCO|[yolov12_encoder.py](encoders/yolov12_encoder.py)|yolov12m|18,726,464|3.75|AGPL-3.0|:grey_question:|
 |[sunsmarterjie YOLOv12](https://github.com/sunsmarterjie/yolov12/tree/main)|COCO|[yolov12_encoder.py](encoders/yolov12_encoder.py)|yolov12l|24,978,080|5.07|AGPL-3.0|:grey_question:|
 |[sunsmarterjie YOLOv12](https://github.com/sunsmarterjie/yolov12/tree/main)|COCO|[yolov12_encoder.py](encoders/yolov12_encoder.py)|yolov12x|55,972,832|11.35|AGPL-3.0|:grey_question:|
+|[RT-DETR PResNet backbone](https://github.com/lyuwenyu/RT-DETR)|COCO|[rtdetr_encoder.py](encoders/rtdetr_encoder.py)|rtdetr_r18vd_truncate|11,190,112|2.07|Apache-2.0|:grey_question:|
+|[RT-DETR PResNet backbone](https://github.com/lyuwenyu/RT-DETR)|COCO|[rtdetr_encoder.py](encoders/rtdetr_encoder.py)|rtdetr_r34vd_truncate|21,290,848|3.93|Apache-2.0|:grey_question:|
+|[RT-DETR PResNet backbone](https://github.com/lyuwenyu/RT-DETR)|COCO|[rtdetr_encoder.py](encoders/rtdetr_encoder.py)|rtdetr_r50vd_truncate|23,474,016|4.35|Apache-2.0|:grey_question:|
+|[RT-DETR PResNet backbone](https://github.com/lyuwenyu/RT-DETR)|COCO|[rtdetr_encoder.py](encoders/rtdetr_encoder.py)|rtdetr_r101vd_truncate|42,413,920|8.07|Apache-2.0|:grey_question:|
+|[RT-DETR PResNet backbone](https://github.com/lyuwenyu/RT-DETR)|COCO + Object365|[rtdetr_encoder.py](encoders/rtdetr_encoder.py)|cocoobject365_rtdetr_r18vd_truncate|11,190,112|2.07|Apache-2.0|:grey_question:|
+|[RT-DETR PResNet backbone](https://github.com/lyuwenyu/RT-DETR)|COCO + Object365|[rtdetr_encoder.py](encoders/rtdetr_encoder.py)|cocoobject365_rtdetr_r34vd_truncate|21,290,848|3.93|Apache-2.0|:grey_question:|
+|[RT-DETR PResNet backbone](https://github.com/lyuwenyu/RT-DETR)|COCO + Object365|[rtdetr_encoder.py](encoders/rtdetr_encoder.py)|cocoobject365_rtdetr_r50vd_truncate|23,474,016|4.35|Apache-2.0|:grey_question:|
+|[RT-DETR PResNet backbone](https://github.com/lyuwenyu/RT-DETR)|COCO + Object365|[rtdetr_encoder.py](encoders/rtdetr_encoder.py)|cocoobject365_rtdetr_r101vd_truncate|42,413,920|8.07|Apache-2.0|:grey_question:|
+|[RT-DETR PResNet backbone + HybridEncoder](https://github.com/lyuwenyu/RT-DETR)|COCO|[rtdetr_encoder.py](encoders/rtdetr_encoder.py)|rtdetr_r18vd|16,155,232|-|Apache-2.0|:grey_question:|
+|[RT-DETR PResNet backbone + HybridEncoder](https://github.com/lyuwenyu/RT-DETR)|COCO|[rtdetr_encoder.py](encoders/rtdetr_encoder.py)|rtdetr_r34vd|26,255,968|-|Apache-2.0|:grey_question:|
+|[RT-DETR PResNet backbone + HybridEncoder](https://github.com/lyuwenyu/RT-DETR)|COCO|[rtdetr_encoder.py](encoders/rtdetr_encoder.py)|rtdetr_r50vd|35,424,864|-|Apache-2.0|:grey_question:|
+|[RT-DETR PResNet backbone + HybridEncoder](https://github.com/lyuwenyu/RT-DETR)|COCO|[rtdetr_encoder.py](encoders/rtdetr_encoder.py)|rtdetr_r101vd|68,204,000|-|Apache-2.0|:grey_question:|
+|[RT-DETR PResNet backbone + HybridEncoder](https://github.com/lyuwenyu/RT-DETR)|COCO + Object365|[rtdetr_encoder.py](encoders/rtdetr_encoder.py)|cocoobject365_rtdetr_r18vd|16,155,232|-|Apache-2.0|:grey_question:|
+|[RT-DETR PResNet backbone + HybridEncoder](https://github.com/lyuwenyu/RT-DETR)|COCO + Object365|[rtdetr_encoder.py](encoders/rtdetr_encoder.py)|cocoobject365_rtdetr_r34vd|26,255,968|-|Apache-2.0|:grey_question:|
+|[RT-DETR PResNet backbone + HybridEncoder](https://github.com/lyuwenyu/RT-DETR)|COCO + Object365|[rtdetr_encoder.py](encoders/rtdetr_encoder.py)|cocoobject365_rtdetr_r50vd|35,424,864|-|Apache-2.0|:grey_question:|
+|[RT-DETR PResNet backbone + HybridEncoder](https://github.com/lyuwenyu/RT-DETR)|COCO + Object365|[rtdetr_encoder.py](encoders/rtdetr_encoder.py)|cocoobject365_rtdetr_r101vd|68,204,000|-|Apache-2.0|:grey_question:|
 |[D-FINE HGNetv2 backbone](https://github.com/Peterande/D-FINE)|COCO|[hgnetv2_encoder.py](encoders/hgnetv2_encoder.py)|coco_hgnetv2_b0|1,850,336|0.326|Apache-2.0|:grey_question:|
 |[D-FINE HGNetv2 backbone](https://github.com/Peterande/D-FINE)|COCO|[hgnetv2_encoder.py](encoders/hgnetv2_encoder.py)|coco_hgnetv2_b2|6,026,544|1.15|Apache-2.0|:grey_question:|
 |[D-FINE HGNetv2 backbone](https://github.com/Peterande/D-FINE)|COCO|[hgnetv2_encoder.py](encoders/hgnetv2_encoder.py)|coco_hgnetv2_b4|13,507,680|2.74|Apache-2.0|:grey_question:|
@@ -215,19 +231,12 @@ This repository aims to summarize **pretrained encoders (backbones)** derived fr
 |[D-FINE HGNetv2 backbone + HybridEncoder encoder](https://github.com/Peterande/D-FINE)|COCO + Object365|[hgnetv2_encoder.py](encoders/hgnetv2_encoder.py)|cocoobject365_dfine_m|13,825,584|-|Apache-2.0|:grey_question:|
 |[D-FINE HGNetv2 backbone + HybridEncoder encoder](https://github.com/Peterande/D-FINE)|COCO + Object365|[hgnetv2_encoder.py](encoders/hgnetv2_encoder.py)|cocoobject365_dfine_l|22,850,912|-|Apache-2.0|:grey_question:|
 |[D-FINE HGNetv2 backbone + HybridEncoder encoder](https://github.com/Peterande/D-FINE)|COCO + Object365|[hgnetv2_encoder.py](encoders/hgnetv2_encoder.py)|cocoobject365_dfine_x|53,931,872|-|Apache-2.0|:grey_question:|
-|[RT-DETR PResNet backbone](https://github.com/lyuwenyu/RT-DETR)|COCO|[rtdetr_encoder.py](encoders/rtdetr_encoder.py)|rtdetr_r18vd_truncate|11,190,112|2.07|Apache-2.0|:grey_question:|
-|[RT-DETR PResNet backbone](https://github.com/lyuwenyu/RT-DETR)|COCO|[rtdetr_encoder.py](encoders/rtdetr_encoder.py)|rtdetr_r34vd_truncate|21,290,848|3.93|Apache-2.0|:grey_question:|
-|[RT-DETR PResNet backbone](https://github.com/lyuwenyu/RT-DETR)|COCO|[rtdetr_encoder.py](encoders/rtdetr_encoder.py)|rtdetr_r50vd_truncate|23,474,016|4.35|Apache-2.0|:grey_question:|
-|[RT-DETR PResNet backbone](https://github.com/lyuwenyu/RT-DETR)|COCO|[rtdetr_encoder.py](encoders/rtdetr_encoder.py)|rtdetr_r101vd_truncate|42,413,920|8.07|Apache-2.0|:grey_question:|
-|[RT-DETR PResNet backbone](https://github.com/lyuwenyu/RT-DETR)|COCO + Object365|[rtdetr_encoder.py](encoders/rtdetr_encoder.py)|cocoobject365_rtdetr_r18vd_truncate|11,190,112|2.07|Apache-2.0|:grey_question:|
-|[RT-DETR PResNet backbone](https://github.com/lyuwenyu/RT-DETR)|COCO + Object365|[rtdetr_encoder.py](encoders/rtdetr_encoder.py)|cocoobject365_rtdetr_r34vd_truncate|21,290,848|3.93|Apache-2.0|:grey_question:|
-|[RT-DETR PResNet backbone](https://github.com/lyuwenyu/RT-DETR)|COCO + Object365|[rtdetr_encoder.py](encoders/rtdetr_encoder.py)|cocoobject365_rtdetr_r50vd_truncate|23,474,016|4.35|Apache-2.0|:grey_question:|
-|[RT-DETR PResNet backbone](https://github.com/lyuwenyu/RT-DETR)|COCO + Object365|[rtdetr_encoder.py](encoders/rtdetr_encoder.py)|cocoobject365_rtdetr_r101vd_truncate|42,413,920|8.07|Apache-2.0|:grey_question:|
-|[RT-DETR PResNet backbone + HybridEncoder](https://github.com/lyuwenyu/RT-DETR)|COCO|[rtdetr_encoder.py](encoders/rtdetr_encoder.py)|rtdetr_r18vd|16,155,232|-|Apache-2.0|:grey_question:|
-|[RT-DETR PResNet backbone + HybridEncoder](https://github.com/lyuwenyu/RT-DETR)|COCO|[rtdetr_encoder.py](encoders/rtdetr_encoder.py)|rtdetr_r34vd|26,255,968|-|Apache-2.0|:grey_question:|
-|[RT-DETR PResNet backbone + HybridEncoder](https://github.com/lyuwenyu/RT-DETR)|COCO|[rtdetr_encoder.py](encoders/rtdetr_encoder.py)|rtdetr_r50vd|35,424,864|-|Apache-2.0|:grey_question:|
-|[RT-DETR PResNet backbone + HybridEncoder](https://github.com/lyuwenyu/RT-DETR)|COCO|[rtdetr_encoder.py](encoders/rtdetr_encoder.py)|rtdetr_r101vd|68,204,000|-|Apache-2.0|:grey_question:|
-|[RT-DETR PResNet backbone + HybridEncoder](https://github.com/lyuwenyu/RT-DETR)|COCO + Object365|[rtdetr_encoder.py](encoders/rtdetr_encoder.py)|cocoobject365_rtdetr_r18vd|16,155,232|-|Apache-2.0|:grey_question:|
-|[RT-DETR PResNet backbone + HybridEncoder](https://github.com/lyuwenyu/RT-DETR)|COCO + Object365|[rtdetr_encoder.py](encoders/rtdetr_encoder.py)|cocoobject365_rtdetr_r34vd|26,255,968|-|Apache-2.0|:grey_question:|
-|[RT-DETR PResNet backbone + HybridEncoder](https://github.com/lyuwenyu/RT-DETR)|COCO + Object365|[rtdetr_encoder.py](encoders/rtdetr_encoder.py)|cocoobject365_rtdetr_r50vd|35,424,864|-|Apache-2.0|:grey_question:|
-|[RT-DETR PResNet backbone + HybridEncoder](https://github.com/lyuwenyu/RT-DETR)|COCO + Object365|[rtdetr_encoder.py](encoders/rtdetr_encoder.py)|cocoobject365_rtdetr_r101vd|68,204,000|-|Apache-2.0|:grey_question:|
+|[DEIM HGNetv2 backbone](https://github.com/ShihuaHuang95/DEIM)|COCO|[hgnetv2_encoder.py](encoders/hgnetv2_encoder.py)|deim_hgnetv2_b0|1,850,336|0.326|Apache-2.0|:grey_question:|
+|[DEIM HGNetv2 backbone](https://github.com/ShihuaHuang95/DEIM)|COCO|[hgnetv2_encoder.py](encoders/hgnetv2_encoder.py)|deim_hgnetv2_b2|6,026,544|1.15|Apache-2.0|:grey_question:|
+|[DEIM HGNetv2 backbone](https://github.com/ShihuaHuang95/DEIM)|COCO|[hgnetv2_encoder.py](encoders/hgnetv2_encoder.py)|deim_hgnetv2_b4|13,507,680|2.74|Apache-2.0|:grey_question:|
+|[DEIM HGNetv2 backbone](https://github.com/ShihuaHuang95/DEIM)|COCO|[hgnetv2_encoder.py](encoders/hgnetv2_encoder.py)|deim_hgnetv2_b5|33,231,840|6.55|Apache-2.0|:grey_question:|
+|[D-FINE HGNetv2 backbone + HybridEncoder encoder](https://github.com/ShihuaHuang95/DEIM)|COCO|[deim_encoder.py](encoders/deim_encoder.py)|deim_s|10,734,816|-|Apache-2.0|:grey_question:|
+|[D-FINE HGNetv2 backbone + HybridEncoder encoder](https://github.com/ShihuaHuang95/DEIM)|COCO|[deim_encoder.py](encoders/deim_encoder.py)|deim_m|13,825,584|-|Apache-2.0|:grey_question:|
+|[D-FINE HGNetv2 backbone + HybridEncoder encoder](https://github.com/ShihuaHuang95/DEIM)|COCO|[deim_encoder.py](encoders/deim_encoder.py)|deim_l|22,850,912|-|Apache-2.0|:grey_question:|
+|[D-FINE HGNetv2 backbone + HybridEncoder encoder](https://github.com/ShihuaHuang95/DEIM)|COCO|[deim_encoder.py](encoders/deim_encoder.py)|deim_x|53,931,872|-|Apache-2.0|:grey_question:|
+

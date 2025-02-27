@@ -1,11 +1,3 @@
-import os
-import logging
-import torch
-import torch.nn as nn
-import torch.nn.functional as F
-
-from .base_encoder import BaseEncoder
-
 """
 reference
 - https://github.com/PaddlePaddle/PaddleDetection/blob/develop/ppdet/modeling/backbones/hgnet_v2.py
@@ -13,7 +5,14 @@ reference
 Copyright (c) 2024 The D-FINE Authors. All Rights Reserved.
 """
 
+import os
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
 
+from loguru import logger
+
+from .base_encoder import BaseEncoder
 
 # Constants for initialization
 kaiming_normal_ = nn.init.kaiming_normal_
@@ -604,7 +603,7 @@ class HGNetv2(BaseEncoder):
                 if os.path.exists(model_path):
                     state = torch.load(model_path, map_location='cpu')
                     
-                    print(f"Loaded {model_name} from local file.")
+                    logger.info(f"Loaded {model_name} from local file.")
                 else:
                     state = torch.hub.load_state_dict_from_url(download_url, map_location='cpu', model_dir=local_model_dir)
 
@@ -618,7 +617,7 @@ class HGNetv2(BaseEncoder):
                     #     torch.distributed.barrier()
                     #     state = torch.load(local_model_dir)
 
-                    print(f"Loaded {model_name} HGNetV2 from URL.")
+                    logger.info(f"Loaded {model_name} HGNetV2 from URL.")
                 dst = self.state_dict()
                 ckpt = {}
                 if is_stage_backbone:
@@ -637,8 +636,8 @@ class HGNetv2(BaseEncoder):
             except (Exception, KeyboardInterrupt) as e:
                 if torch.distributed.get_rank() == 0:
                     print(f"{str(e)}")
-                    logging.error(RED + "CRITICAL WARNING: Failed to load pretrained HGNetV2 model" + RESET)
-                    logging.error(GREEN + f"Please check your network connection. Or download the model manually from " \
+                    logger.error(RED + "CRITICAL WARNING: Failed to load pretrained HGNetV2 model" + RESET)
+                    logger.error(GREEN + f"Please check your network connection. Or download the model manually from " \
                                 + RESET + f"{download_url}" + GREEN + " to " + RESET + f"{local_model_dir}." + RESET)
                 exit()
                 

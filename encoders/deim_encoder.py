@@ -1,6 +1,6 @@
 """
 reference
-https://github.com/Peterande/D-FINE
+https://github.com/ShihuaHuang95/DEIM
 Copyright (c) 2024 The D-FINE Authors. All Rights Reserved.
 """
 
@@ -417,7 +417,7 @@ class HybridEncoder(nn.Module):
 
         return outs
 
-class DFINE(BaseEncoder):
+class DEIM(BaseEncoder):
     def __init__(
         self,
         encoder_name='dfine_s', 
@@ -426,10 +426,9 @@ class DFINE(BaseEncoder):
         local_model_dir='weight/hgnetv2/'
         ):  
         
-        super(DFINE, self).__init__(finetune)
+        super(DEIM, self).__init__(finetune)
         
-        is_stage_backbone = False
-        if encoder_name.endswith('dfine_s') is True:
+        if encoder_name == 'deim_s':
             hgnetv2_arch = 'hgnetv2B0' 
             
             in_channels = [256, 512, 1024]
@@ -447,17 +446,9 @@ class DFINE(BaseEncoder):
             depth_mult = 1
             act = 'silu'  
             
-            if encoder_name.startswith('cocoobject365') is True:
-                url = 'https://github.com/Peterande/storage/releases/download/dfinev1.0/dfine_s_obj2coco.pth'
-            elif encoder_name.startswith('object365') is True:
-                url = 'https://github.com/Peterande/storage/releases/download/dfinev1.0/dfine_s_obj365.pth'
-            elif encoder_name.startswith('coco') is True:
-                url = 'https://github.com/Peterande/storage/releases/download/dfinev1.0/dfine_s_coco.pth'
-            else:
-                url = 'https://github.com/Peterande/storage/releases/download/dfinev1.0/PPHGNetV2_B0_stage1.pth'
-                is_stage_backbone = True
+            model_path = '/hdd/hoa/deim/deim_dfine_hgnetv2_s_coco_120e.pth'
             
-        elif encoder_name.endswith('dfine_m') is True:
+        elif encoder_name == 'deim_m':
             hgnetv2_arch = 'hgnetv2B2'          
 
             in_channels = [384, 768, 1536]
@@ -475,17 +466,9 @@ class DFINE(BaseEncoder):
             depth_mult = 0.67
             act = 'silu' 
 
-            if encoder_name.startswith('cocoobject365') is True:
-                url = 'https://github.com/Peterande/storage/releases/download/dfinev1.0/dfine_m_obj2coco.pth'
-            elif encoder_name.startswith('object365') is True:
-                url = 'https://github.com/Peterande/storage/releases/download/dfinev1.0/dfine_m_obj365.pth'
-            elif encoder_name.startswith('coco') is True:
-                url = 'https://github.com/Peterande/storage/releases/download/dfinev1.0/dfine_m_coco.pth'
-            else:
-                url = 'https://github.com/Peterande/storage/releases/download/dfinev1.0/PPHGNetV2_B2_stage1.pth'
-                is_stage_backbone = True
+            model_path = '/hdd/hoa/deim/deim_dfine_hgnetv2_m_coco_90e.pth'
             
-        elif encoder_name.endswith('dfine_l') is True:
+        elif encoder_name == 'deim_l':
             hgnetv2_arch = 'hgnetv2B4'          
 
             in_channels = [512, 1024, 2048]
@@ -503,17 +486,9 @@ class DFINE(BaseEncoder):
             depth_mult = 1
             act = 'silu'    
             
-            if encoder_name.startswith('cocoobject365') is True:
-                url = 'https://github.com/Peterande/storage/releases/download/dfinev1.0/dfine_l_obj2coco.pth'
-            elif encoder_name.startswith('object365') is True:
-                url = 'https://github.com/Peterande/storage/releases/download/dfinev1.0/dfine_l_obj365.pth'
-            elif encoder_name.startswith('coco') is True:
-                url = 'https://github.com/Peterande/storage/releases/download/dfinev1.0/dfine_l_coco.pth'
-            else:
-                url = 'https://github.com/Peterande/storage/releases/download/dfinev1.0/PPHGNetV2_B4_stage1.pth'
-                is_stage_backbone = True
+            model_path = '/hdd/hoa/deim/deim_dfine_hgnetv2_l_coco_50e.pth'
 
-        elif encoder_name.endswith('dfine_x') is True:  
+        elif encoder_name == 'deim_x':  
             hgnetv2_arch = 'hgnetv2B5'          
 
             in_channels = [512, 1024, 2048]
@@ -531,15 +506,7 @@ class DFINE(BaseEncoder):
             depth_mult = 1
             act = 'silu'             
 
-            if encoder_name.startswith('cocoobject365') is True:
-                url = 'https://github.com/Peterande/storage/releases/download/dfinev1.0/dfine_x_obj2coco.pth'
-            elif encoder_name.startswith('object365') is True:
-                url = 'https://github.com/Peterande/storage/releases/download/dfinev1.0/dfine_x_obj365.pth'
-            elif encoder_name.startswith('coco') is True:
-                url = 'https://github.com/Peterande/storage/releases/download/dfinev1.0/dfine_x_coco.pth'
-            else:
-                url = 'https://github.com/Peterande/storage/releases/download/dfinev1.0/PPHGNetV2_B5_stage1.pth'
-                is_stage_backbone = True
+            model_path = '/hdd/hoa/deim/deim_dfine_hgnetv2_x_coco_50e.pth'
                          
         self.backbone = HGNetv2(architecture=hgnetv2_arch, \
                                 # pretrained=False, \
@@ -564,44 +531,20 @@ class DFINE(BaseEncoder):
         self.dimList = [hidden_dim, hidden_dim, hidden_dim]
                 
         if pretrained:
-            # if encoder_name.startswith('deim') is True:
-            #     print("model path:", model_path)
-            #     try:
-                    
-            #         state = torch.load(model_path, map_location='cpu')
-            #         print(f"Loaded {model_path} from local file.")
-            #     except:
-            #         raise Exception(f"Cannot load {model_path} from local file.")
-            # else:
-            RED, GREEN, RESET = "\033[91m", "\033[92m", "\033[0m"
-            try:
-                model_name = os.path.basename(url)
-                model_path = local_model_dir + model_name
-                if os.path.exists(model_path):
-                    state = torch.load(model_path, map_location='cpu')
-                    logger.info(f"Loaded {model_name} from local file.")
-                else:
-                    state = torch.hub.load_state_dict_from_url(url, map_location='cpu', model_dir=local_model_dir)
-                    logger.info(f"Loaded {model_name} DFINE from URL.")
-            except (Exception, KeyboardInterrupt) as e:
-                if torch.distributed.get_rank() == 0:
-                    print(f"{str(e)}")
-                    logger.error(RED + "CRITICAL WARNING: Failed to load pretrained DFINE model" + RESET)
-                    logger.error(GREEN + f"Please check your network connection. Or download the model manually from " \
-                                + RESET + f"{url}" + GREEN + " to " + RESET + f"{local_model_dir}." + RESET)
+            model_name = os.path.basename(model_path)
+            
+            if os.path.exists(model_path):
+                state = torch.load(model_path, map_location='cpu', weights_only=False)
+                logger.info(f"Loaded {model_name} from local file.")
+            else:
+                logger.error(f"Loaded {model_name} Error. You need to download it first!")
             
             dst = self.state_dict()
             ckpt = {}
-            if is_stage_backbone:
-                for k, v in state.items():
-                    if k in dst and v.shape == dst[k].shape:
-                        print(k)
-                        ckpt[k] = v
-            else:
-                for k, v in state['model'].items():
-                    if k in dst and v.shape == dst[k].shape:
-                        print(k)
-                        ckpt[k] = v 
+            for k, v in state['model'].items():
+                if k in dst and v.shape == dst[k].shape:
+                    print(k)
+                    ckpt[k] = v 
             self.load_state_dict(ckpt, strict=False)
                
         self._freeze_stages()
