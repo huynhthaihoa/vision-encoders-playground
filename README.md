@@ -143,6 +143,16 @@ This repository aims to summarize **pretrained encoders (backbones)** derived fr
 |[Custom Jahongir YOLOv5-pt for TI](https://github.com/jahongir7174/YOLOv5-pt)|COCO|[yolov5_encoder.py](encoders/nets/yolov5_encoder.py)|tiyolov5m|20,847,072|2.94|AGPL-3.0|:x:|
 |[Custom Jahongir YOLOv5-pt for TI](https://github.com/jahongir7174/YOLOv5-pt)|COCO|[yolov5_encoder.py](encoders/nets/yolov5_encoder.py)|tiyolov5l|46,105,984|6.61|AGPL-3.0|:x:|
 |[Custom Jahongir YOLOv5-pt for TI](https://github.com/jahongir7174/YOLOv5-pt)|COCO|[yolov5_encoder.py](encoders/nets/yolov5_encoder.py)|tiyolov5x|86,177,440|12.51|AGPL-3.0|:x:|
+|[ultralytics YOLOv5](https://github.com/ultralytics/ultralytics)|COCO|[ultralytics_encoder.py](encoders/ultralytics_encoder.py)|ultralytics_yolov5n|1,757,152|0.256|AGPL-3.0|:x:|
+|[ultralytics YOLOv5](https://github.com/ultralytics/ultralytics)|COCO|[ultralytics_encoder.py](encoders/ultralytics_encoder.py)|ultralytics_yolov5s|7,006,144|0.971|AGPL-3.0|:x:|
+|[ultralytics YOLOv5](https://github.com/ultralytics/ultralytics)|COCO|[ultralytics_encoder.py](encoders/ultralytics_encoder.py)|ultralytics_yolov5m|20,847,072|2.94|AGPL-3.0|:x:|
+|[ultralytics YOLOv5](https://github.com/ultralytics/ultralytics)|COCO|[ultralytics_encoder.py](encoders/ultralytics_encoder.py)|ultralytics_yolov5l|46,105,984|6.61|AGPL-3.0|:x:|
+|[ultralytics YOLOv5](https://github.com/ultralytics/ultralytics)|COCO|[ultralytics_encoder.py](encoders/ultralytics_encoder.py)|ultralytics_yolov5x|86,177,440|12.51|AGPL-3.0|:x:|
+|[ultralytics YOLOv5 (custom)](https://github.com/ultralytics/ultralytics)|COCO|[ultralytics_encoder.py](encoders/ultralytics_encoder.py)|ultralytics_tiyolov5n|1,757,152|0.256|AGPL-3.0|:heavy_check_mark:
+|[ultralytics YOLOv5 (custom)](https://github.com/ultralytics/ultralytics)|COCO|[ultralytics_encoder.py](../networks/encoders/ultralytics_encoder.py)|ultralytics_tiyolov5s|7,006,144|0.971|AGPL-3.0|:heavy_check_mark:
+|[ultralytics YOLOv5 (custom)](https://github.com/ultralytics/ultralytics)|COCO|[ultralytics_encoder.py](../networks/encoders/ultralytics_encoder.py)|ultralytics_tiyolov5m|20,847,072|2.94|AGPL-3.0|:heavy_check_mark:
+|[ultralytics YOLOv5 (custom)](https://github.com/ultralytics/ultralytics)|COCO|[ultralytics_encoder.py](../networks/encoders/ultralytics_encoder.py)|ultralytics_tiyolov5l|46,105,984|6.61|AGPL-3.0|:heavy_check_mark:
+|[ultralytics YOLOv5 (custom)](https://github.com/ultralytics/ultralytics)|COCO|[ultralytics_encoder.py](../networks/encoders/ultralytics_encoder.py)|ultralytics_tiyolov5x|86,177,440|12.51|AGPL-3.0|:heavy_check_mark:
 |[meituan YOLOv6 P5](https://github.com/meituan/YOLOv6)|COCO|[yolov6_encoder.py](encoders/yolov6_encoder.py)|yolov6n|4,629,248|0.729|GPL-3.0|:grey_question:|
 |[meituan YOLOv6 P5](https://github.com/meituan/YOLOv6)|COCO|[yolov6_encoder.py](encoders/yolov6_encoder.py)|yolov6s|18,472,448|2.87|GPL-3.0|:grey_question:|
 |[meituan YOLOv6 P5](https://github.com/meituan/YOLOv6)|COCO|[yolov6_encoder.py](encoders/yolov6_encoder.py)|yolov6m|33,959,832|5.4|GPL-3.0|:grey_question:|
@@ -152,6 +162,16 @@ This repository aims to summarize **pretrained encoders (backbones)** derived fr
 |[meituan YOLOv6 lite](https://github.com/meituan/YOLOv6)|COCO|[yolov6lite_encoder.py](encoders/yolov6lite_encoder.py)|yolov6lites|354,662|0.096|GPL-3.0|:grey_question:|
 |[meituan YOLOv6 lite](https://github.com/meituan/YOLOv6)|COCO|[yolov6lite_encoder.py](encoders/yolov6lite_encoder.py)|yolov6litem|588,101|0.122|GPL-3.0|:grey_question:|
 |[meituan YOLOv6 lite](https://github.com/meituan/YOLOv6)|COCO|[yolov6lite_encoder.py](encoders/yolov6lite_encoder.py)|yolov6litel|895,509|0.173|GPL-3.0|:grey_question:|
+|[ultralytics YOLOv6](https://github.com/ultralytics/ultralytics)|COCO|[ultralytics_encoder.py](encoders/ultralytics_encoder.py)|ultralytics_yolov6n|3,892,720|0.686|AGPL-3.0|:x:|
+|[ultralytics YOLOv6](https://github.com/ultralytics/ultralytics)|COCO|[ultralytics_encoder.py](encoders/ultralytics_encoder.py)|ultralytics_yolov6s|15,554,528|2.62|AGPL-3.0|:x:|
+|[ultralytics YOLOv6](https://github.com/ultralytics/ultralytics)|COCO|[ultralytics_encoder.py](encoders/ultralytics_encoder.py)|ultralytics_yolov6m|50,655,696|9.96|AGPL-3.0|:x:|
+|[ultralytics YOLOv6](https://github.com/ultralytics/ultralytics)|COCO|[ultralytics_encoder.py](encoders/ultralytics_encoder.py)|ultralytics_yolov6l|108,779,456|24.49|AGPL-3.0|:x:|
+|[ultralytics YOLOv6](https://github.com/ultralytics/ultralytics)|COCO|[ultralytics_encoder.py](encoders/ultralytics_encoder.py)|ultralytics_yolov6x|169,948,080|37.94|AGPL-3.0|:x:|
+|[ultralytics YOLOv6 (custom)](https://github.com/ultralytics/ultralytics)|COCO|[ultralytics_encoder.py](encoders/ultralytics_encoder.py)|ultralytics_tiyolov6n|3,892,720|0.686|AGPL-3.0|:heavy_check_mark:
+|[ultralytics YOLOv6 (custom)](https://github.com/ultralytics/ultralytics)|COCO|[ultralytics_encoder.py](../networks/encoders/ultralytics_encoder.py)|ultralytics_tiyolov6s|15,554,528|2.62|AGPL-3.0|:heavy_check_mark:
+|[ultralytics YOLOv6 (custom)](https://github.com/ultralytics/ultralytics)|COCO|[ultralytics_encoder.py](../networks/encoders/ultralytics_encoder.py)|ultralytics_tiyolov6m|50,655,696|9.96|AGPL-3.0|:heavy_check_mark:
+|[ultralytics YOLOv6 (custom)](https://github.com/ultralytics/ultralytics)|COCO|[ultralytics_encoder.py](../networks/encoders/ultralytics_encoder.py)|ultralytics_tiyolov6l|108,779,456|24.49|AGPL-3.0|:heavy_check_mark:
+|[ultralytics YOLOv6 (custom)](https://github.com/ultralytics/ultralytics)|COCO|[ultralytics_encoder.py](../networks/encoders/ultralytics_encoder.py)|ultralytics_tiyolov6x|169,948,080|37.94|AGPL-3.0|:heavy_check_mark:
 |[WongKinYiu YOLOv7](https://github.com/WongKinYiu/yolov7/tree/main)|COCO|[yolov7_encoder.py](encoders/yolov7_encoder.py)|yolov7-tiny|5,997,856|0.803|GPL-3.0|:grey_question:|
 |[WongKinYiu YOLOv7](https://github.com/WongKinYiu/yolov7/tree/main)|COCO|[yolov7_encoder.py](encoders/yolov7_encoder.py)|yolov7|37,162,400|6.42|GPL-3.0|:grey_question:|
 |[WongKinYiu YOLOv7](https://github.com/WongKinYiu/yolov7/tree/main)|COCO|[yolov7_encoder.py](encoders/yolov7_encoder.py)|yolov7x|70,772,424|11.55|GPL-3.0|:grey_question:|
@@ -170,17 +190,31 @@ This repository aims to summarize **pretrained encoders (backbones)** derived fr
 |[ultralytics YOLOv8](https://github.com/ultralytics/ultralytics)|COCO|[ultralytics_encoder.py](encoders/ultralytics_encoder.py)|ultralytics_yolov8m|22,080,624|3.87|AGPL-3.0|:x:|
 |[ultralytics YOLOv8](https://github.com/ultralytics/ultralytics)|COCO|[ultralytics_encoder.py](encoders/ultralytics_encoder.py)|ultralytics_yolov8l|38,047,040|8.53|AGPL-3.0|:x:|
 |[ultralytics YOLOv8](https://github.com/ultralytics/ultralytics)|COCO|[ultralytics_encoder.py](encoders/ultralytics_encoder.py)|ultralytics_yolov8x|59,434,640|13.32|AGPL-3.0|:x:|
+|[ultralytics YOLOv8 (custom)](https://github.com/ultralytics/ultralytics)|COCO|[ultralytics_encoder.py](encoders/ultralytics_encoder.py)|ultralytics_tiyolov8n|2,259,536|0.318|AGPL-3.0|:x:|
+|[ultralytics YOLOv8 (custom)](https://github.com/ultralytics/ultralytics)|COCO|[ultralytics_encoder.py](encoders/ultralytics_encoder.py)|ultralytics_tiyolov8s|9,019,552|1.25|AGPL-3.0|:x:|
+|[ultralytics YOLOv8 (custom)](https://github.com/ultralytics/ultralytics)|COCO|[ultralytics_encoder.py](encoders/ultralytics_encoder.py)|ultralytics_tiyolov8m|22,080,624|3.87|AGPL-3.0|:x:|
+|[ultralytics YOLOv8 (custom)](https://github.com/ultralytics/ultralytics)|COCO|[ultralytics_encoder.py](encoders/ultralytics_encoder.py)|ultralytics_tiyolov8l|38,047,040|8.53|AGPL-3.0|:x:|
+|[ultralytics YOLOv8 (custom)](https://github.com/ultralytics/ultralytics)|COCO|[ultralytics_encoder.py](encoders/ultralytics_encoder.py)|ultralytics_tiyolov8x|59,434,640|13.32|AGPL-3.0|:x:|
 |[WongKinYiu YOLOv9](https://github.com/WongKinYiu/yolov9)|COCO|[yolov9_encoder.py](encoders/yolov9_encoder.py)|yolov9-t|1,709,232|0.397|GPL-3.0|:grey_question:|
 |[WongKinYiu YOLOv9](https://github.com/WongKinYiu/yolov9)|COCO|[yolov9_encoder.py](encoders/yolov9_encoder.py)|yolov9-s|6,800,736|1.57|GPL-3.0|:grey_question:|
 |[WongKinYiu YOLOv9](https://github.com/WongKinYiu/yolov9)|COCO|[yolov9_encoder.py](encoders/yolov9_encoder.py)|yolov9-c|29,456,768|7.55|GPL-3.0|:grey_question:|
 |[WongKinYiu YOLOv9](https://github.com/WongKinYiu/yolov9)|COCO|[yolov9_encoder.py](encoders/yolov9_encoder.py)|yolov9-e|58,425,024|11.86|GPL-3.0|:grey_question:|
 |[WongKinYiu YOLOv9](https://github.com/WongKinYiu/yolov9)|COCO|[yolov9_encoder.py](encoders/yolov9_encoder.py)|gelan-c|19,946,432|4.75|GPL-3.0|:grey_question:|
 |[WongKinYiu YOLOv9](https://github.com/WongKinYiu/yolov9)|COCO|[yolov9_encoder.py](encoders/yolov9_encoder.py)|gelan-e|52,562,112|10.2|GPL-3.0|:grey_question:|
+|[ultralytics YOLOv9](https://github.com/ultralytics/ultralytics)|COCO|[ultralytics_encoder.py](encoders/ultralytics_encoder.py)|ultralytics_yolov9c|19,946,432|4.75|AGPL-3.0|:x:|
+|[ultralytics YOLOv9](https://github.com/ultralytics/ultralytics)|COCO|[ultralytics_encoder.py](encoders/ultralytics_encoder.py)|ultralytics_yolov9e|52,562,112|10.2|AGPL-3.0|:x:|
+|[ultralytics YOLOv9 (custom)](https://github.com/ultralytics/ultralytics)|COCO|[ultralytics_encoder.py](encoders/ultralytics_encoder.py)|ultralytics_tiyolov9c|19,946,432|4.75|AGPL-3.0|:x:|
+|[ultralytics YOLOv9 (custom)](https://github.com/ultralytics/ultralytics)|COCO|[ultralytics_encoder.py](encoders/ultralytics_encoder.py)|ultralytics_tiyolov9e|52,562,112|10.2|AGPL-3.0|:x:|
 |[THU-MIG YOLOv10](https://github.com/THU-MIG/yolov10)|COCO|[yolov10_encoder.py](encoders/yolov10_encoder.py)|yolov10n|1,845,712|0.301|AGPL-3.0|:grey_question:|
 |[THU-MIG YOLOv10](https://github.com/THU-MIG/yolov10)|COCO|[yolov10_encoder.py](encoders/yolov10_encoder.py)|yolov10s|6,427,552|1.14|AGPL-3.0|:grey_question:|
 |[THU-MIG YOLOv10](https://github.com/THU-MIG/yolov10)|COCO|[yolov10_encoder.py](encoders/yolov10_encoder.py)|yolov10m|14,203,152|3.34|AGPL-3.0|:grey_question:|
 |[THU-MIG YOLOv10](https://github.com/THU-MIG/yolov10)|COCO|[yolov10_encoder.py](encoders/yolov10_encoder.py)|yolov10l|22,943,296|7.0|AGPL-3.0|:grey_question:|
 |[THU-MIG YOLOv10](https://github.com/THU-MIG/yolov10)|COCO|[yolov10_encoder.py](encoders/yolov10_encoder.py)|yolov10x|27,269,840|9.24|AGPL-3.0|:grey_question:|
+|[THU-MIG YOLOv10 (custom)](https://github.com/THU-MIG/yolov10)|COCO|[yolov10_encoder.py](encoders/yolov10_encoder.py)|tiyolov10n|1,845,712|0.301|AGPL-3.0|:grey_question:|
+|[THU-MIG YOLOv10 (custom)](https://github.com/THU-MIG/yolov10)|COCO|[yolov10_encoder.py](encoders/yolov10_encoder.py)|tiyolov10s|6,427,552|1.14|AGPL-3.0|:grey_question:|
+|[THU-MIG YOLOv10 (custom)](https://github.com/THU-MIG/yolov10)|COCO|[yolov10_encoder.py](encoders/yolov10_encoder.py)|tiyolov10m|14,203,152|3.34|AGPL-3.0|:grey_question:|
+|[THU-MIG YOLOv10 (custom)](https://github.com/THU-MIG/yolov10)|COCO|[yolov10_encoder.py](encoders/yolov10_encoder.py)|tiyolov10l|22,943,296|7.0|AGPL-3.0|:grey_question:|
+|[THU-MIG YOLOv10 (custom)](https://github.com/THU-MIG/yolov10)|COCO|[yolov10_encoder.py](encoders/yolov10_encoder.py)|tiyolov10x|27,269,840|9.24|AGPL-3.0|:grey_question:|
 |[Jahongir YOLOv11-pt](https://github.com/jahongir7174/YOLOv11-pt)|COCO|[yolov11_encoder.py](encoders/yolov11_encoder.py)|yolov11n|2,159,168|0.287|AGPL-3.0|:grey_question:|
 |[Jahongir YOLOv11-pt](https://github.com/jahongir7174/YOLOv11-pt)|COCO|[yolov11_encoder.py](encoders/yolov11_encoder.py)|yolov11s|8,608,384|1.13|AGPL-3.0|:grey_question:|
 |[Jahongir YOLOv11-pt](https://github.com/jahongir7174/YOLOv11-pt)|COCO|[yolov11_encoder.py](encoders/yolov11_encoder.py)|yolov11m|18,641,984|3.78|AGPL-3.0|:grey_question:|

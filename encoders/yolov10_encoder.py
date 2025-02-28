@@ -2,10 +2,8 @@ import os
 import shutil
 import torch
 
-from copy import deepcopy
 
 from .ultralytics.nn.tasks import FeatureExtraction
-from .ultralytics.nn.modules.block import C2fAttn, ImagePoolingAttn
 from .base_encoder import BaseEncoder
 from function_utils import replace_layers
 from class_utils import CustomSiLU
@@ -47,6 +45,10 @@ class YOLOv10(BaseEncoder):
         # self.make_conv_convert_list(out_dimList) 
         
         if pretrained:
+            
+            if architecture.startswith('ti') is True:
+                architecture = architecture[2:]
+
             if os.path.exists('ultralytics'):
                 shutil.rmtree('ultralytics')
             shutil.copytree('networks/encoders/ultralytics', 'ultralytics')

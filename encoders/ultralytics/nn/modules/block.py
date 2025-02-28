@@ -54,6 +54,9 @@ __all__ = (
     "Silence",
     "C3k2",
     "A2C2f",
+    "TISPP",
+    "TISPPF",
+    "TISPPELAN"
 )
 
 
@@ -163,20 +166,34 @@ class SPP(nn.Module):
         c_ = c1 // 2  # hidden channels
         self.cv1 = Conv(c1, c_, 1, 1)
         self.cv2 = Conv(c_ * (len(k) + 1), c2, 1, 1)
-        num_3x3_maxpool = []
-        max_pool_module_list = []
-        for pool_kernel in k:
-            assert (pool_kernel-3)%2==0; "Required Kernel size cannot be implemented with kernel_size of 3"
-            num_3x3_maxpool = 1 + (pool_kernel-3)//2
-            max_pool_module_list.append(nn.Sequential(*num_3x3_maxpool*[nn.MaxPool2d(kernel_size=3, stride=1, padding=1)]))
-            #max_pool_module_list[-1] = nn.ModuleList(max_pool_module_list[-1])
-        self.m = nn.ModuleList(max_pool_module_list)
+        self.m = nn.ModuleList([nn.MaxPool2d(kernel_size=x, stride=1, padding=x // 2) for x in k])
         
     def forward(self, x):
         """Forward pass of the SPP layer, performing spatial pyramid pooling."""
         x = self.cv1(x)
         return self.cv2(torch.cat([x] + [m(x) for m in self.m], 1))
 
+class TISPP(nn.Module):
+    """Custom SPP for TI"""
+
+    def __init__(self, c1, c2, k=(5, 9, 13)):
+        """Initialize the SPP layer with input/output channels and pooling kernel sizes."""
+        super().__init__()
+        c_ = c1 // 2  # hidden channels
+        self.cv1 = Conv(c1, c_, 1, 1)
+        self.cv2 = Conv(c_ * (len(k) + 1), c2, 1, 1)
+        num_3x3_maxpool = []
+        max_pool_module_list = []
+        for pool_kernel in k:
+            assert (pool_kernel-3)%2==0; "Required Kernel size cannot be implemented with kernel_size of 3"
+            num_3x3_maxpool = 1 + (pool_kernel-3)//2
+            max_pool_module_list.append(nn.Sequential(*num_3x3_maxpool*[nn.MaxPool2d(kernel_size=3, stride=1, padding=1)]))
+        self.m = nn.ModuleList(max_pool_module_list)
+        
+    def forward(self, x):
+        """Forward pass of the SPP layer, performing spatial pyramid pooling."""
+        x = self.cv1(x)
+        return self.cv2(torch.cat([x] + [m(x) for m in self.m], 1))
 
 class SPPF(nn.Module):
     """Spatial Pyramid Pooling - Fast (SPPF) layer for YOLOv5 by Glenn Jocher."""
@@ -192,16 +209,36 @@ class SPPF(nn.Module):
         self.cv1 = Conv(c1, c_, 1, 1)
         self.cv2 = Conv(c_ * 4, c2, 1, 1)
         
-        num_3x3_maxpool = 1 + (k - 3) // 2
-        # max_pool_module_list = [nn.Sequential(*num_3x3_maxpool*[nn.MaxPool2d(kernel_size=3, stride=1, padding=1)])]
-        self.m = nn.Sequential(*num_3x3_maxpool*[nn.MaxPool2d(kernel_size=3, stride=1, padding=1)])
-
+        self.m = nn.MaxPool2d(kernel_size=k, stride=1, padding=k // 2)
+        
     def forward(self, x):
         """Forward pass through Ghost Convolution block."""
         y = [self.cv1(x)]
         y.extend(self.m(y[-1]) for _ in range(3))
         return self.cv2(torch.cat(y, 1))
 
+class TISPPF(nn.Module):
+    """Custom SPPF for TI"""
+
+    def __init__(self, c1, c2, k=5):
+        """
+        Initializes the SPPF layer with given input/output channels and kernel size.
+
+        This module is equivalent to SPP(k=(5, 9, 13)).
+        """
+        super().__init__()
+        c_ = c1 // 2  # hidden channels
+        self.cv1 = Conv(c1, c_, 1, 1)
+        self.cv2 = Conv(c_ * 4, c2, 1, 1)
+        
+        num_3x3_maxpool = 1 + (k - 3) // 2
+        self.m = nn.Sequential(*num_3x3_maxpool*[nn.MaxPool2d(kernel_size=3, stride=1, padding=1)])
+        
+    def forward(self, x):
+        """Forward pass through Ghost Convolution block."""
+        y = [self.cv1(x)]
+        y.extend(self.m(y[-1]) for _ in range(3))
+        return self.cv2(torch.cat(y, 1))
 
 class C1(nn.Module):
     """CSP Bottleneck with 1 convolution."""
@@ -647,9 +684,29 @@ class ADown(nn.Module):
         x2 = self.cv2(x2)
         return torch.cat((x1, x2), 1)
 
-
 class SPPELAN(nn.Module):
     """SPP-ELAN."""
+
+    def __init__(self, c1, c2, c3, k=5):
+        """Initializes SPP-ELAN block with convolution and max pooling layers for spatial pyramid pooling."""
+        super().__init__()
+        self.c = c3
+        self.cv1 = Conv(c1, c3, 1, 1)
+        
+        self.cv2 = nn.MaxPool2d(kernel_size=k, stride=1, padding=k // 2)
+        self.cv3 = nn.MaxPool2d(kernel_size=k, stride=1, padding=k // 2)
+        self.cv4 = nn.MaxPool2d(kernel_size=k, stride=1, padding=k // 2)   
+                 
+        self.cv5 = Conv(4 * c3, c2, 1, 1)
+
+    def forward(self, x):
+        """Forward pass through SPPELAN layer."""
+        y = [self.cv1(x)]
+        y.extend(m(y[-1]) for m in [self.cv2, self.cv3, self.cv4])
+        return self.cv5(torch.cat(y, 1))
+
+class TISPPELAN(nn.Module):
+    """Custom SPP-ELAN. for TI"""
 
     def __init__(self, c1, c2, c3, k=5):
         """Initializes SPP-ELAN block with convolution and max pooling layers for spatial pyramid pooling."""
@@ -660,9 +717,10 @@ class SPPELAN(nn.Module):
         num_3x3_maxpool = 1 + (k - 3) // 2
         max_pool_module_list = nn.Sequential(*num_3x3_maxpool*[nn.MaxPool2d(kernel_size=3, stride=1, padding=1)])
 
-        self.cv2 = max_pool_module_list#nn.ModuleList(max_pool_module_list)#nn.MaxPool2d(kernel_size=k, stride=1, padding=k // 2)
-        self.cv3 = max_pool_module_list#nn.ModuleList(max_pool_module_list)#nn.MaxPool2d(kernel_size=k, stride=1, padding=k // 2)
-        self.cv4 = max_pool_module_list#nn.ModuleList(max_pool_module_list)#nn.MaxPool2d(kernel_size=k, stride=1, padding=k // 2)
+        self.cv2 = max_pool_module_list
+        self.cv3 = max_pool_module_list
+        self.cv4 = max_pool_module_list
+        
         self.cv5 = Conv(4 * c3, c2, 1, 1)
 
     def forward(self, x):
@@ -670,7 +728,6 @@ class SPPELAN(nn.Module):
         y = [self.cv1(x)]
         y.extend(m(y[-1]) for m in [self.cv2, self.cv3, self.cv4])
         return self.cv5(torch.cat(y, 1))
-
 
 class Silence(nn.Module):
     """Silence."""

@@ -52,6 +52,9 @@ from .block import (
     RepVGGDW,
     C3k2,
     A2C2f,
+    TISPP,
+    TISPPF,
+    TISPPELAN
 )
 from .conv import (
     CBAM,

@@ -55,7 +55,10 @@ from ..nn.modules import (
     RepVGGDW,
     v10Detect,
     A2C2f,
-    C3k2
+    C3k2,
+    TISPP,
+    TISPPF,
+    TISPPELAN
 )
 from ..utils import DEFAULT_CFG_DICT, DEFAULT_CFG_KEYS, LOGGER, colorstr, emojis, yaml_load
 from ..utils.checks import check_requirements, check_suffix, check_yaml
@@ -950,7 +953,10 @@ def parse_model(d, ch):#, verbose=True):  # model_dict, input_channels(3)
             SCDown,
             C2fCIB,
             C3k2,
-            A2C2f
+            A2C2f,
+            TISPPF,
+            TISPP,
+            TISPPELAN
         }:
             if m in [C2f, C2fAttn, C2fCIB]:
                 feats.append(args[0])

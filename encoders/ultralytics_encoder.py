@@ -48,20 +48,62 @@ class UltralyticsEncoder(BaseEncoder):
         else:
             self.txt_feats = None
         
-        if architecture.find('yolov8n') != -1:
+        if architecture.find('yolov5n') != -1:
+            self.dimList = [64, 128, 256]
+        elif architecture.find('yolov5s') != -1:
+            self.dimList = [128, 256, 512]
+        elif architecture.find('yolov5m') != -1:
+            self.dimList = [192, 384, 768]
+        elif architecture.find('yolov5l') != -1: #or architecture.find('yolov9') != -1 or architecture.find('yolov'):
+            self.dimList = [256, 512, 1024]
+        elif architecture.find('yolov5x') != -1:
+            self.dimList = [320, 640, 1280]
+
+        elif architecture.find('yolov6n') != -1:
+            self.dimList = [32, 64, 128]
+        elif architecture.find('yolov6s') != -1:
+            self.dimList = [64, 128, 256]
+        elif architecture.find('yolov6m') != -1:
+            self.dimList = [96, 192, 384]
+        elif architecture.find('yolov6l') != -1: #or architecture.find('yolov9') != -1 or architecture.find('yolov'):
+            self.dimList = [128, 256, 512]
+        elif architecture.find('yolov6x') != -1:
+            self.dimList = [160, 320, 640]
+           
+        elif architecture.find('yolov8n') != -1:
             self.dimList = [64, 128, 256]
         elif architecture.find('yolov8s') != -1:
             self.dimList = [128, 256, 512]
         elif architecture.find('yolov8m') != -1:
             self.dimList = [192, 384, 576]
-        elif architecture.find('yolov8l') != -1:
+        elif architecture.find('yolov8l') != -1: #or architecture.find('yolov9') != -1 or architecture.find('yolov'):
             self.dimList = [256, 512, 512]
         elif architecture.find('yolov8x') != -1:
+            self.dimList = [320, 640, 640]
+            
+        elif architecture.find('yolov9') != -1:
+            self.dimList = [256, 512, 512]
+            
+        elif architecture.find('yolov10b') != -1:
+            self.dimList = [256, 512, 512]
+        elif architecture.find('yolov10l') != -1:
+            self.dimList = [256, 512, 512]
+        elif architecture.find('yolov10m') != -1:
+            self.dimList = [192, 384, 576]
+        elif architecture.find('yolov10n') != -1:
+            self.dimList = [64, 128, 256]
+        elif architecture.find('yolov10s') != -1:
+            self.dimList = [128, 256, 512]
+        elif architecture.find('yolov10x') != -1:
             self.dimList = [320, 640, 640]
             
         # self.make_conv_convert_list(out_dimList)  
         
         if pretrained:
+            
+            if architecture.startswith('ti') is True:
+                architecture = architecture[2:]
+
             if os.path.exists('ultralytics'):
                 shutil.rmtree('ultralytics')
             # os.makedirs('ultralytics', exist_ok=True)
