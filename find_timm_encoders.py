@@ -12,13 +12,14 @@ if __name__ == '__main__':
     parser.add_argument('-iw', '--width', help="Input width", type=int, default=224)
     parser.add_argument('-ih', '--height', help="Input height", type=int, default=224)
     parser.add_argument('-r', '--report', help="Export report", action='store_true')
+    parser.add_argument('-p', '--pretrained', help="Use pretrained model", action='store_true')
     args = parser.parse_args()
         
     report = None
     if args.report:
-        report = open(f"{args.query}_{args.width}_{args.height}.txt", "w+")
+        report = open(f"{args.query}_{args.width}_{args.height}_{args.pretrained}.txt", "w+")
 
-    model_names = timm.list_models(f"*{args.query}*")
+    model_names = timm.list_models(f"*{args.query}*", pretrained=args.pretrained)
     if len(model_names) == 0:
         text = f"No model found with query {args.query}"
         logger.error(text)
@@ -44,7 +45,7 @@ if __name__ == '__main__':
             if args.report:
                 report.write(f"{text}\n")
         splitter = "============\n"
-        logger.warning(splitter)
+        logger.info(splitter)
         if args.report:
             report.write(splitter)
     if args.report:
