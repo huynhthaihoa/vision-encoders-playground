@@ -8,7 +8,7 @@ from loguru import logger
 if __name__ == '__main__':
     
     parser = argparse.ArgumentParser(description='Encoder check.', fromfile_prefix_chars='@')
-    parser.add_argument('-q', '--query',                   type=str,   help='query keyword', default='*clip*')
+    parser.add_argument('-q', '--query', type=str,   help='query keyword', default='*clip*')
     parser.add_argument('-iw', '--width', help="Input width", type=int, default=224)
     parser.add_argument('-ih', '--height', help="Input height", type=int, default=224)
     parser.add_argument('-r', '--report', help="Export report", action='store_true')
@@ -18,7 +18,7 @@ if __name__ == '__main__':
     if args.report:
         report = open(f"{args.query}_{args.width}_{args.height}.txt", "w+")
 
-    model_names = timm.list_models(args.query)
+    model_names = timm.list_models(f"*{args.query}*")
     if len(model_names) == 0:
         text = f"No model found with query {args.query}"
         logger.error(text)
