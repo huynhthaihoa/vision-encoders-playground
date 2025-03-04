@@ -1,6 +1,5 @@
 import timm
 import torch
-import sys
 import argparse
 
 from loguru import logger
