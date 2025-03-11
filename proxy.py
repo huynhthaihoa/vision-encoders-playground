@@ -88,6 +88,9 @@ class ProxyEncoder(nn.Module):
         elif encoder_name.find('ppyoloe') != -1:#is True:
             from encoders.ppyoloe_encoder import PPYOLOE
             self.wrapper = PPYOLOE(encoder_name, pretrained=pretrained, finetune=finetune)#use_customsilu=use_customsilu, replace_silu=replace_silu)
+        elif encoder_name.find('damoyolo') != -1:
+            from encoders.damoyolo_encoder import DAMOYOLO
+            self.wrapper = DAMOYOLO(encoder_name, pretrained=self.pretrained, finetune=finetune)#out_dimList=feature_list)
         elif encoder_name.find('rtdetr') != -1:
             from encoders.rtdetr_encoder import RTDetTR
             self.wrapper = RTDetTR(encoder_name, pretrained=self.pretrained, finetune=finetune)#out_dimList=feature_list)
@@ -95,12 +98,11 @@ class ProxyEncoder(nn.Module):
             from encoders.hgnetv2_encoder import HGNetv2
             self.wrapper = HGNetv2(encoder_name, pretrained=self.pretrained, finetune=finetune)#out_dimList=feature_list)
         elif encoder_name.find('dfine') != -1:
-            print("HELLO!")
             from encoders.dfine_encoder import DFINE
             self.wrapper = DFINE(encoder_name, pretrained=self.pretrained, finetune=finetune)
-        elif encoder_name.find('damoyolo') != -1:
-            from encoders.damoyolo_encoder import DAMOYOLO
-            self.wrapper = DAMOYOLO(encoder_name, pretrained=self.pretrained, finetune=finetune)#out_dimList=feature_list)
+        elif encoder_name.find('deim') != -1:
+            from encoders.deim_encoder import DEIM
+            self.wrapper = DEIM(encoder_name, pretrained=self.pretrained, finetune=finetune)
         else:
             raise Exception("Unknown encoder!")
         
