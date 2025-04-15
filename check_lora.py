@@ -48,6 +48,7 @@ if __name__ == '__main__':
     parser.add_argument('-d', '--dropout', help="LoRA dropout", type=float, default = 0.0)
     parser.add_argument('--replace', help="Replacement instead of injection", action='store_true')
     parser.add_argument('--verbose', help="Show injected layer names", action='store_true')
+    parser.add_argument('-t', '--target_module_name', help="Target module name", type=str, default = None)
     
     parser.add_argument('-f', '--fps', help="if set, measure FPS by running 10000 inference iterations", action='store_true')
     parser.add_argument('-s', '--seed', help="Seed for reproducibility", type=int, default = 42)
@@ -72,7 +73,7 @@ if __name__ == '__main__':
         logger.warning("Error when calculating MACs!")
         macs = 0
         
-    lora_model = inject_lora_into_model(model, r=args.rank, alpha=args.alpha, dropout=args.dropout, replace=args.replace, verbose=args.verbose)
+    lora_model = inject_lora_into_model(model, r=args.rank, alpha=args.alpha, dropout=args.dropout, replace=args.replace, verbose=args.verbose, target_module_name=args.target_module_name)
 
     num_params = sum([np.prod(p.size()) for p in lora_model.parameters() if p.requires_grad])
     num_trainable_params = sum([np.prod(p.size()) for p in lora_model.parameters() if p.requires_grad])

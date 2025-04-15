@@ -7,7 +7,7 @@ from loguru import logger
 if __name__ == '__main__':
     
     parser = argparse.ArgumentParser(description='Encoder check.', fromfile_prefix_chars='@')
-    parser.add_argument('-q', '--query', type=str,   help='query keyword', default='*clip*')
+    parser.add_argument('-q', '--query', type=str,   help='query keyword', default='clip')
     parser.add_argument('-iw', '--width', help="Input width", type=int, default=224)
     parser.add_argument('-ih', '--height', help="Input height", type=int, default=224)
     parser.add_argument('-r', '--report', help="Export report", action='store_true')
