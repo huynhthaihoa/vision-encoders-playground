@@ -274,3 +274,6 @@ This repository aims to summarize **pretrained encoders (backbones)** derived fr
 |[D-FINE HGNetv2 backbone + HybridEncoder encoder](https://github.com/ShihuaHuang95/DEIM)|COCO|[deim_encoder.py](encoders/deim_encoder.py)|deim_l|22,850,912|-|Apache-2.0|:grey_question:|
 |[D-FINE HGNetv2 backbone + HybridEncoder encoder](https://github.com/ShihuaHuang95/DEIM)|COCO|[deim_encoder.py](encoders/deim_encoder.py)|deim_x|53,931,872|-|Apache-2.0|:grey_question:|
 
+# Utilities
+
+*(To be added)*
