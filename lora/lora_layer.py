@@ -19,6 +19,7 @@ class LoRALinear(nn.Module):
         self.weight = nn.Parameter(torch.randn(out_features, in_features), requires_grad=False)
         
         self.bias = nn.Parameter(torch.randn(out_features), requires_grad=False)
+        
         self.replace = replace
         
         self.lora_A = nn.Parameter(torch.randn(r, in_features) * 0.01)
@@ -29,6 +30,12 @@ class LoRALinear(nn.Module):
     def forward(self, x):
         result = nn.functional.linear(x, self.weight)
         lora_adjustment = self.dropout(x) @ self.lora_A.T @ self.lora_B.T * self.scaling
-        if self.replace:
-            return lora_adjustment + self.bias
-        return result + lora_adjustment + self.bias
+        output = lora_adjustment
+        if not self.replace:
+            output += result
+        if self.bias is not None:
+            output += self.bias
+        return output
+        # if self.replace:
+        #     return lora_adjustment + self.bias
+        # return result + lora_adjustment + self.bias

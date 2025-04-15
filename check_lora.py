@@ -103,11 +103,11 @@ if __name__ == '__main__':
         gc.collect()
         torch.cuda.empty_cache()        
     else:
-        features = model(input) 
+        features = lora_model(input) 
     
     logger.info(f"Input shape {input.shape}")
     for i, feature in enumerate(features):
-        logger.info(f"Feature {i} shape: {feature.shape}, {model.dimList[i]}")
+        logger.info(f"Feature {i} shape: {feature.shape}, {lora_model.dimList[i]}")
         
     if args.fps:
         time_list = time_list[1:]    
