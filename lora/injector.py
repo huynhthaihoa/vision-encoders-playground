@@ -8,7 +8,10 @@ import torch.nn as nn
 
 def inject_lora_into_model(model, r=8, target_module_name=None, alpha=1, dropout=0., replace=False, finetune_bias=False, verbose=False):#="attention"):
     for name, module in model.named_modules():
-        if isinstance(module, nn.Linear) and (target_module_name is None or (target_module_name is not None and target_module_name in name)):
+        # Using isinstance() checks for inheritance while type() or __class__ checks for exact class match. 
+        # The `is` operator is preferred over `==` when comparing types because it checks for identity rather than equality.
+        # if isinstance(module, nn.Linear) and (target_module_name is None or (target_module_name is not None and target_module_name in name)):
+        if type(module) is nn.Linear and (target_module_name is None or (target_module_name is not None and target_module_name in name)):
             if verbose:
                 print(f"Injecting LoRA into {name}")
             in_f, out_f = module.in_features, module.out_features
