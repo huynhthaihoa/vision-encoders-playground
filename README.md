@@ -1,6 +1,6 @@
 # vision-encoders-playground
 
-This repository aims to summarize **pretrained encoders (backbones)** derived from different **detection/classification models**. These encoders can be used for several downstream vision tasks such as classification, object detection, body keypoint estimation, semantic segmentation, depth estimation, etc.
+This repository aims to summarize **pre-trained vision encoders (backbones)** derived from different **detection/classification models**. These encoders can be used for several downstream vision tasks, such as classification, object detection, body keypoint estimation, semantic segmentation, and depth estimation.
 
 ## Requirements
 *to be updated*
@@ -13,7 +13,12 @@ This repository aims to summarize **pretrained encoders (backbones)** derived fr
 - :grey_question: means the TI compatibility has not been checked 
 - GMACs values were calculated with input size `(224, 224)`
 
-### Classification-based
+<details>
+
+  <summary>Encoders based on image classification models</summary>
+
+  ### Classification-based encoders
+  
 |Reference|Pretrained Dataset|Source|Encoder name|Param Num|GMACs|License|TI compatibility|
 |------|------:|------:|------:|------:|------:|------:|------------:|
 |[geffnet](https://github.com/rwightman/gen-efficientnet-pytorch/tree/master/geffnet)|ImageNet|[geffnet_encoder.py](encoders/geffnet_encoder.py)|efficientnetb0|4,007,548|0.387|Apache-2.0|:x:|
@@ -97,7 +102,13 @@ This repository aims to summarize **pretrained encoders (backbones)** derived fr
 |[apple ml-fastvit](https://github.com/apple/ml-fastvit)|ImageNet|[fastvit_encoder.py](encoders/fastvit_encoder.py)|fastvit_sa36|Apple|:grey_question:|
 |[apple ml-fastvit](https://github.com/apple/ml-fastvit)|ImageNet|[fastvit_encoder.py](encoders/fastvit_encoder.py)|fastvit_ma36|Apple|:grey_question:| -->
 
-### Detection-based
+</details>
+
+<details>
+<summary>Encoders based on object detection models</summary>
+  
+  ### Detection-based encoders
+
 |Reference|Pretrained Dataset|Source|Encoder|Param Num|GMACs|License|TI compatibility|
 |------|------:|------:|------:|------:|------:|------:|------------:|
 |[edgeai-yolox](https://github.com/TexasInstruments/edgeai-yolox)|COCO|[yolox_encoder.py](encoders/yolox_encoder.py)|tiyoloxn|1,767,868|0.269|Apache-2.0|:heavy_check_mark:|
@@ -273,7 +284,13 @@ This repository aims to summarize **pretrained encoders (backbones)** derived fr
 |[D-FINE HGNetv2 backbone + HybridEncoder encoder](https://github.com/ShihuaHuang95/DEIM)|COCO|[deim_encoder.py](encoders/deim_encoder.py)|deim_m|13,825,584|-|Apache-2.0|:grey_question:|
 |[D-FINE HGNetv2 backbone + HybridEncoder encoder](https://github.com/ShihuaHuang95/DEIM)|COCO|[deim_encoder.py](encoders/deim_encoder.py)|deim_l|22,850,912|-|Apache-2.0|:grey_question:|
 |[D-FINE HGNetv2 backbone + HybridEncoder encoder](https://github.com/ShihuaHuang95/DEIM)|COCO|[deim_encoder.py](encoders/deim_encoder.py)|deim_x|53,931,872|-|Apache-2.0|:grey_question:|
+  
+</details>
+
+
 
 # Utilities
 
-*(To be added)*
+## timm-based encoder search
+
+## LoRA
