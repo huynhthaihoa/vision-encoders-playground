@@ -293,4 +293,4 @@ This repository aims to summarize **pre-trained vision encoders (backbones)** de
 
 ## timm-based encoder search
 
-## LoRA
+## LoRA (Low-Rank Adaptation)
