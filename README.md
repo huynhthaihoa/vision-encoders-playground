@@ -287,10 +287,25 @@ This repository aims to summarize **pre-trained vision encoders (backbones)** de
   
 </details>
 
+## Tools
 
+### timm-based encoder search
+This tool is to search for a usable encoder (feature extractor) from the [timm (pytorch-image-models) repository](https://github.com/huggingface/pytorch-image-models). One can use this tool with the following command:
+```
+python find_timm_encoders.py -q [query] -iw [input_width] -ih [input_height] [--pretrained]  [--report]
+```
 
-# Utilities
+In which:
+- **query**: the model keyword query, such as `clip`, `resnet`, `mobilenet`
+- **width**: the desired Width of the input tensor (assume the input tensor has shape `[Batch, Channel, Height, Width]`)
+- **height**: the desired Height of the input tensor (assume the input tensor has shape `[Batch, Channel, Height, Width]`)
+- **pretrained**: If set, the tool will search for models that provide usable pretrained weights. Otherwise, it will search for every model regardless of whether the pretrained weights are available.
+- **report**: If set, the search result will be saved into the text file with the following name format `{query}_{width}_{height}_{pretrained}.txt`
 
-## timm-based encoder search
+Example:
+```
+python find_timm_encoders.py -q clip -iw 224 -ih 224 --pretrained --report
+```
+### LoRA (Low-Rank Adaptation)
+This tool is to apply **Low-Rank Adaptation** to a pre-defined model
 
-## LoRA (Low-Rank Adaptation)
