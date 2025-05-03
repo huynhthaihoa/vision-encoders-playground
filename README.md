@@ -1,6 +1,6 @@
 # vision-encoders-playground
 
-This repository aims to summarize **pre-trained vision encoders (backbones)** derived from different **detection/classification models**. These encoders can be used for several downstream vision tasks, such as classification, object detection, body keypoint estimation, semantic segmentation, and depth estimation.
+This repository aims to summarize **pre-trained vision encoders (backbones)** derived from different **detection/classification models**. These encoders can be used as a **feature extractor** for several downstream vision tasks, such as classification, object detection, body keypoint estimation, semantic segmentation, and depth estimation.
 
 ## Requirements
 *to be updated*
