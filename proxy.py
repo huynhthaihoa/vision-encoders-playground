@@ -15,6 +15,9 @@ class ProxyEncoder(nn.Module):
         if encoder_name.startswith('timm_'): #timm encoders
             from encoders.timm_encoder import timmEncoder
             self.wrapper = timmEncoder(encoder_name, pretrained=self.pretrained, finetune=finetune)
+        elif encoder_name.startswith('dinov2'):
+            from encoders.dinov2_encoder import Dinov2
+            self.wrapper = Dinov2(encoder_name, finetune=finetune, init_type=self.init_type)
         elif encoder_name.startswith('ultralytics_'):
             from encoders.ultralytics_encoder import UltralyticsEncoder
             self.wrapper = UltralyticsEncoder(encoder_name, pretrained=self.pretrained, finetune=finetune)

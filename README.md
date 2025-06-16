@@ -286,11 +286,37 @@ This repository aims to summarize **pre-trained vision encoders (backbones)** de
 |[D-FINE HGNetv2 backbone + HybridEncoder encoder](https://github.com/ShihuaHuang95/DEIM)|COCO|[deim_encoder.py](encoders/deim_encoder.py)|deim_x|53,931,872|-|Apache-2.0|:grey_question:|
   
 </details>
+  
+  ### DINOv2
+
+- **Reference**: [facebookresearch DINOv2](https://github.com/facebookresearch/dinov2)
+- **Source**: [dinov2.py](encoders/dinov2_encoder.py)
+- **License**: Apache-2.0
+
+|Encoder|Param Num|GMACs|
+|------:|------:|------:|
+|dinov2_vits14|34,676,864|11.79|
+|dinov2_vits14_clstoken|35,858,048|12.09|
+|dinov2_vits14_reg|34,678,400|11.88|
+|dinov2_vits14_reg_clstoken|35,859,584|12.18|
+|dinov2_vitb14|100,282,112|28.52|
+|dinov2_vitb14_clstoken|105,003,776|29.73|
+|dinov2_vitb14_reg|100,285,184|28.86|
+|dinov2_vitb14_reg_clstoken|105,006,848|30.07|
+|dinov2_vitl14|318,791,168|84.6|
+|dinov2_vitl14_clstoken|327,183,872|86.75|
+|dinov2_vitl14_reg|318,795,264|85.81|
+|dinov2_vitl14_reg_clstoken|327,187,968|87.96|
+|dinov2_vitg14|1,152,345,088|298.6|
+|dinov2_vitg14_clstoken|1,171,225,600|303.43|
+|dinov2_vitg14_reg|1,152,351,232|303.13|
+|dinov2_vitg14_reg_clstoken|1,171,231,744|307.97|
+
 
 ## Tools
 
 ### timm-based encoder search
-This tool is to search for a usable encoder (feature extractor) from the [timm (pytorch-image-models) repository](https://github.com/huggingface/pytorch-image-models). One can use this tool with the following command:
+This tool is to search for a usable encoder (feature extractor) from the [timm (pytorch-image-models) repository](https://github.com/huggingface/pytorch-image-models). One can use this tool by executing the following command:
 ```
 python find_timm_encoders.py -q [query] -iw [input_width] -ih [input_height] [--pretrained]  [--report]
 ```
@@ -307,5 +333,22 @@ Example:
 python find_timm_encoders.py -q clip -iw 224 -ih 224 --pretrained --report
 ```
 ### LoRA (Low-Rank Adaptation)
-This tool is to apply **Low-Rank Adaptation** to a pre-defined model
+This tool is to apply **Low-Rank Adaptation** to a pre-defined model. One can use this tool by executing the following command:
+```
+python check_lora.py -e [encoder_name] -iw [input_width] -ih [input_height] -r [--rank]  -a [--alpha] -d [dropout] --replace --finetune_bias -t [target_module_name]
+--verbose
+```
+
+where:
+- **encoder_name**: encoder name (select one from the above list)
+- **input_width**: width of the input tensor, default is `224`
+- **input_height**: height of the input tensor, default is `224`
+- **rank**: LoRA's rank, default is `8`
+- **alpha**: LoRA's alpha, default is `1`
+- **dropout**: LoRA's dropout, default is `0`
+- **replace**: if set, the "original weight matrix" will be completely removed by the "LoRA weight matrix"
+- **finetune_bias**: if set, the "original bias" will be finetuned (otherwise it will be frozen)
+- **target_module_name**: the name of module that will be applied LoRA (default, 
+every layer will be checked to applied LoRA if possible)
+- **verbose**: if set, show injected layer names
 
