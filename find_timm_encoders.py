@@ -1,3 +1,4 @@
+import numpy as np
 import timm
 import torch
 import argparse
@@ -20,16 +21,17 @@ if __name__ == '__main__':
 
     model_names = timm.list_models(f"*{args.query}*", pretrained=args.pretrained)
     if len(model_names) == 0:
-        text = f"No model found with query {args.query}"
+        text = f"No model found with query={args.query}, pretrained={args.pretrained}, width={args.width}, height={args.height}!"
         logger.error(text)
         if args.report:
             report.write(f"{text}\n")
     for model_name in model_names:
         try:
             model = timm.create_model(model_name, features_only=True, pretrained=False)
+            num_params = sum([np.prod(p.size()) for p in model.parameters()])
             image = torch.randn(1, 3, args.height, args.width)
             features = model(image)
-            text = f'{model_name} supports up to {len(features)}-level features with input shape (1, 3, {args.height}, {args.width}):'
+            text = f'{model_name} contains {num_params} params, supports up to {len(features)}-level features with input shape (1, 3, {args.height}, {args.width}):'
             logger.info(text)
             if args.report:
                 report.write(f"{text}\n")
